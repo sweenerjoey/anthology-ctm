@@ -1,0 +1,84 @@
+:root {
+    --color-primary: #c7b59b;
+    --color-secondary: #990000;
+    --color-tertiary: #990000;
+    --color-white: #fff;
+    --color-gray-100: #e7e7e7;
+    --color-gray-200: #999;
+    --color-gray-300: #434445;
+    --color-gray-400: #1b1c1d;
+    --color-black: #0d0e0f;
+    --color-black-overlay: rgb(from var(--color-black) r g b / 0.5);
+
+    --font-sans: "Public Sans", system-ui, sans-serif;
+    --font-serif: "Newsreader", Times, serif;
+    --font-size-11: 0.6875rem;
+    --font-size-12: 0.75rem;
+    --font-size-16: 1rem;
+    --font-size-20: 1.25rem;
+    --font-size-32: clamp(1.625rem, 6vw, 2rem);
+    --font-size-48: clamp(2rem, 8vw, 3rem);
+
+    --line-height-base-value: 1;
+    --line-height-single: var(--line-height-base-value);
+    --line-height-heading: calc(var(--line-height-base-value) * 1.38);
+    --line-height-body: calc(var(--line-height-base-value) * 1.9);
+    --line-height-double: calc(var(--line-height-base-value) * 2);
+    --letter-spacing-s: 0.2px;
+    --letter-spacing-m: 0.75px;
+    --letter-spacing-l: 1.25px;
+    --letter-spacing-xl: 2px;
+}
+html {
+    background-color: var(--color-black);
+    color: var(--color-gray-100);
+}
+h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 300;
+    letter-spacing: -2.5px;
+    margin: var(--spacing-l) 0;
+}
+.teaser /* Coming soon screen content... */ {
+    background: linear-gradient(var(--color-black-overlay), var(--color-black-overlay));
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    color: var(--color-white);
+}
+.teaser > video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -10;
+}
+footer {
+    background-color: transparent;
+    width: 100%;
+    color: white;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    transition: all 0.3s;
+    z-index: 1;
+    padding: var(--spacing-l) 0;
+}
+footer > img {
+    width: 350px;
+    margin-bottom: var(--spacing-s);
+}
+footer .label {
+    font-size: 9px;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: var(--letter-spacing-s);
+}
