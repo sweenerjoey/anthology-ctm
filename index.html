@@ -7,28 +7,101 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" type="text/css">
     
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/skeleton.css" rel="stylesheet">
     <link href="css/theme.css" rel="stylesheet">
+    <link href="navigation/navigation.css" rel="stylesheet">
+    <script src="navigation/navigation.js"></script>
   </head>
   <body>
+    <header id="main-nav" class>
+      <nav>
+        <a href="index.html" class="nav-logo" tabindex="-1">
+          <img src="./assets/Anthology_Logo_White_Glow.svg" alt="Logo for Anthology CTM" loading="lazy">
+        </a>
+        <label for="mobile-menu" class="hamburger">≡</label>
+        <input id="mobile-menu" type="checkbox">
+        <ul class="nav-links">
+          <li>
+            <a href="#one" class="button-tertiary">
+              <span>Chapter I</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <main>
-      <section class="block teaser">
-        <video autoplay muted loop>
-          <source src="./assets/9694805-uhd_4096_2160_25fps.mp4" type="video/mp4">
-        </video>
-        <div class="center">
-          <h1>Coming <i>Soon</i></h1>
+      <section class="block header">
+        <div class="container">
+          <h1 class="center">
+            <img src="./assets/Anthology_Logo_White_Glow.svg" alt="Logo for Courage and Conviction: Dr. Mary Walker's War with a brushed metallic finish">
+          </h1>
+          <p class="subtitle">A New Minecraft CTM Series by Joey Sweener</p>
+          <video autoplay muted loop class="wallpaper">
+            <source src="./assets/12298312-hd_1920_1080_24fps.mp4" type="video/mp4">
+          </video>
         </div>
       </section>
-      <footer class="center">
-        <img src="./assets/Anthology_Logo_White_Glow.svg" alt="Anthology CTM map series logo" class="logo">
-        <p class="label">A New Minecraft CTM Series by Joey Sweener</p>
-      </footer>
+      <section class="block opener">
+        <div class="container center">
+          <p>Anthology is a collection of Complete the Monument (CTM) maps for modern Minecraft. Evoking the classic feeling of CTM maps from Minecraft's heyday, Anthology focuses on dungeon-delving through intricately-built structures, and makes minimal but tasteful use of data- and resource-packs to provide unique gameplay mechanics without straying too far from core Minecraft experience.</p>
+        </div>
+      </section>
+      <section class="block chapter" id="one">
+        <div class="container center">
+          <div class="ch-plate">
+            <div class="ch-outline">
+              <i class="ph-light ph-compass-rose"></i>
+              <hgroup class="ch-title">
+                <p class="eyebrow">Chapter I</p>
+                <hr>
+                <h2>Luminary</h2>
+              </hgroup>
+              <p class="description">Bring Light to the Darkness</p>
+            </div>
+          </div>
+          <img src="./assets/ch-i-splash.jpg" alt="Chapter I: Luminary chapter marker background image" class="wallpaper">
+        </div>
+      </section>
+      <section class="block background">
+        <div class="container grid">
+          <div class="span-all md-span-4 sidebar">
+            <div class="row">
+              <i class="ph-bold ph-medal"></i>
+              <p>16 objectives</p>
+            </div>
+            <div class="row">
+              <i class="ph-bold ph-package"></i>
+              <p>Made for <b>Minecraft 1.21.10+</b></p>
+            </div>
+            <div class="row">
+              <i class="ph-bold ph-calendar-dots"></i>
+              <p>Coming soon...</p>
+            </div>
+            <div class="row">
+              <i class="ph-bold ph-download-simple"></i>
+             <p>Not available for download...</p>
+            </div>
+          </div>
+          <div class="span-all md-span-7 prose">
+            <p class="lore">The world is awash in darkness. The Academics felt it: in the frayed edges of our minds; injecting into the veins of the world; in our hubris at attempting to reach beyond the cosmos... and we shuddered at its reverberations. But beneath it, deep in the debris of its ruinous wake, there might still be hope. A hope that we don't have to be prisoners to our minds forever; that the world can still be mended; that we can conquer our fears once and for all.</p>
+            <p class="lore">My Protégé. Carry with you the glimmer of hope that, someday, this shroud of darkness might be lifted. My Protégé, please do right where we went so wrong...</p>
+            <p>–</p>
+            <p>In <em>Chapter I: Luminary</em>, you play as the Protégé, arriving to the remnants of the Aterean Empire to observe a cosmic darkness that’s been summoned by the Academics and potentially help rid it from the land. In the hunt for 16 relics from the far-flung regions of the land to offer back to the Sanctum, your adventure will take you into crumbling catacombs, derelict towers, soaring palaces... and perhaps across space and time.</p>
+            <p>Featuring 4 unique biomes, custom items and unique monsters, <em>Chapter I: Luminary</em> presents a strong but humble first outing to the Anthology collection, weaving lore and storytelling into the core Minecraft experience.</p>
+          </div>
+        </div>
+      </section>
     </main>
+    <footer class="block">
+      <div class="container center">
+        <p>Anthology is a map series for modern Minecraft created by <a href="https://sweenerjoey.carrd.co/">Joey Sweener</a>. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>

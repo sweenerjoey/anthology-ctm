@@ -1,18 +1,33 @@
-/* Created by Joey Sweener. https://jsweener.carrd.co. | V 1.0.0 */
+/*
+* Joey Sweener's Skeleton.css V 2.0.0
+* Copyright 2025 Joey Sweener
+* 11/18/2025
+*/
 
 :root { 
-    /* These root variables define the core elements of the system, like spacing and grids. Editing these variables will cascade down into the skeleton, allowing for broad system edits by manipulating these values. Please note that there are no visual characteristics in this file; those are edited in "theme.css". */
-    --spacing-base-value: 1rem;
-    --spacing-xs: calc(var(--spacing-base-value) * 0.5);
-    --spacing-s: var(--spacing-base-value);
-    --spacing-m: calc(var(--spacing-base-value) * 1.5);
-    --spacing-l: calc(var(--spacing-base-value) * 2.25);
-    --spacing-xl: calc(var(--spacing-base-value) * 4);
-    --spacing-xxl: calc(var(--spacing-base-value) * 6);
-    --spacing-3xl: calc(var(--spacing-base-value) * 12);
-    --grid-columns: 4; /* This default number reflects the number of columns on mobile. */
-    --grid-gap: var(--spacing-s);
-    --max-width: 90ch;
+    /* These root variables define core parameters for the skeleton, like spacing metrics and default grids, hoping to eliminate as many "magic numbers" as possible. Editing these variables cascades down into the skeleton, allowing for far-reaching edits by manipulating a handful of values. Please note that there are no visual characteristics built into the skeleton, like fonts and colors; those are edited separately in "theme.css". */
+
+    --base-value: 1rem;
+
+    --spacing-50: calc(var(--base-value) * 0.5);
+    --spacing-100: var(--base-value);
+    --spacing-200: calc(var(--base-value) * 2);
+    --spacing-300: calc(var(--base-value) * 3);
+    --spacing-400: calc(var(--base-value) * 4);
+    --spacing-500: calc(var(--base-value) * 5);
+    --spacing-600: calc(var(--base-value) * 6);
+    --spacing-1000: calc(var(--base-value) * 10);
+
+    --grid-columns: 4; /* Default value reflects mobile column number. */
+    --grid-gap: var(--spacing-100);
+    --grid-margin: var(--grid-gap);
+
+    --flex-gap: var(--grid-gap);
+    --flex-margin: var(--flex-gap);
+
+    --content-width: 90%;
+    --content-max-width: 90ch;
+    --full-width: 100%;
 
 }
 * {
@@ -21,158 +36,126 @@
     box-sizing: border-box;
 	scroll-behavior: smooth;
 }
-img { 
-    /* Constrain the width of images to be 100% the size of their container. Can be overwritten in theme.css if this, for some reason, causes issues. */
-    width: 100%;
+html {
+    font-size: var(--base-value);
 }
-.block {
+img {
+    width: var(--full-width); /* Sets the width of images to be 100% the size of their containers. Can be overwritten in theme.css if this causes issues. */
+}
+.block { /* Meaning "building block," this can be applied to any section, container, div, etc. to give it some basic padding and transition properties. More specific container classes can be defined in theme.css and applied in HTML. */
     transition: all 300ms;
     position: relative;
     margin: 0 auto;
-    max-width: 100%;
-    padding: var(--spacing-m) 0;
+    max-width: var(--full-width);
+    padding: var(--spacing-200) 0;
 }
-.container {
-    width: 90%;
-    max-width: var(--max-width);
+.container { /* Anything can be a container, which constrains its content to whatever is defined in the root variables as the "content width" up to the "content max width." */
+    width: var(--content-width);
+    max-width: var(--content-max-width);
     margin: 0 auto;
 }
-/* CSS grid functionality. Starts as a 4-column grid on mobile and expands to a 12-column grid at larger screen sizes. Various classes assigned in the HTML determine an item's placement on the grid. All children of the grid must have at least one span or column assignment, or will default to spanning a single column. */
-.grid {
+/* 
+ * CSS Grid.
+ * Any container can be assigned grid functionality. It starts as a 4-column grid on mobile and expands to a 12-column grid at larger screen sizes. Various classes assigned in the HTML to direct children of the grid determine that item's placement in a mobile-first framework. All children of the grid must have at least one mobile class assigned, or it will default to spanning a single column at every breakpoint.
+ */
+ .grid {
     display: grid;
     grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
     gap: var(--grid-gap);
-    padding: var(--grid-gap) inherit;
-}
+    margin: var(--grid-margin) auto;
+ }
 .grid * {
     grid-column-start: var(--grid-column-start);
     grid-column-end: var(--grid-span);
     width: 100%;
 }
-.mobile-span-full, .mobile-span-all, .mobile-span-4 {
-    --grid-span: span var(--grid-columns);
-}
-.mobile-span-3 {
-    --grid-span: span calc((var(--grid-columns) / var(--grid-columns)) * 3);
-}
-.mobile-span-half, .mobile-span-2 {
-    --grid-span: span calc(var(--grid-columns) / 2);
-}
-.mobile-span-quarter, .mobile-span-1 {
+.span-1 {
     --grid-span: span calc(var(--grid-columns) / var(--grid-columns));
 }
-@media (min-width: 768px) {
+.span-quarter {
+    --grid-span: span calc(var(--grid-columns) / 4);
+}
+.span-2 {
+    --grid-span: span 2;
+}
+.span-half, .span-two-quarter, .span-two-quarters {
+    --grid-span: span calc(var(--grid-columns) / 2);
+}
+.span-3, .span-three-quarter, .span-three-quarters {
+    --grid-span: span calc((var(--grid-columns) / var(--grid-columns)) * 3);
+}
+.span-4, .span-all {
+    --grid-span: span var(--grid-columns);
+}
+@media ( min-width: 48rem ) { /* Tablet 768 */
     :root {
-        --grid-columns: 12;
-        --grid-gap: var(--spacing-m);
+        --grid-columns: 12; /* Starting at tablet size, the number of grid columns increases. */
     }
-    .span-1 {
+    .md-span-1 {
         --grid-column-start: unset;
         --grid-span: span 1;
     }
-    .span-2 {
+    .md-span-2 {
         --grid-column-start: unset;
         --grid-span: span 2;
     }
-    .span-3, .span-quarter {
+    .md-span-3, .md-span-quarter {
         --grid-column-start: unset;
         --grid-span: span calc(var(--grid-columns) / 4);
     }
-    .span-4, .span-third, .span-one-third {
+    .md-span-4, .md-span-third, .md-span-one-third {
         --grid-column-start: unset;
         --grid-span: span calc(var(--grid-columns) / 3);
     }
-    .span-5 {
+    .md-span-5 {
         --grid-column-start: unset;
         --grid-span: span 5;
     }
-    .span-6, .span-half, .span-two-quarter, .span-two-quarters {
+    .md-span-6, .md-span-half, .md-span-two-quarter, .md-span-two-quarters {
         --grid-column-start: unset;
         --grid-span: span calc(var(--grid-columns) / 2);
     }
-    .span-7 {
+    .md-span-7 {
         --grid-column-start: unset;
         --grid-span: span 7;
     }
-    .span-8, .span-two-third, .span-two-thirds {
+    .md-span-8, .md-span-two-third, .md-span-two-thirds {
         --grid-column-start: unset;
         --grid-span: span calc((var(--grid-columns) / 3) * 2);
     }
-    .span-9, .span-three-quarter, .span-three-quarters {
+    .md-span-9, .md-span-three-quarter, .md-span-three-quarters {
         --grid-column-start: unset;
         --grid-span: span calc((var(--grid-columns) / 4) * 3);
     }
-    .span-10 {
+    .md-span-10 {
         --grid-column-start: unset;
         --grid-span: span 10;
     }
-    .span-11 {
+    .md-span-11 {
         --grid-column-start: unset;
         --grid-span: span 11;
     }
-    .span-12, .span-all, .span-full {
+    .md-span-12, .md-span-all, .md-span-full {
         --grid-column-start: 1;
         --grid-span: span var(--grid-columns);
     }
-    .col-start-1 {
-        --grid-column-start: 1;
-    }
-    .col-start-2 {
-        --grid-column-start: 2;
-    }
-    .col-start-3 {
-        --grid-column-start: 3;
-    }
-    .col-start-4, .col-start-quarter {
-        --grid-column-start: 4;
-    }
-    .col-start-5, .col-start-third, .col-start-one-third {
-        --grid-column-start: 5;
-    }
-    .col-start-6 {
-        --grid-column-start: 6;
-    }
-    .col-start-7, .col-start-half {
-        --grid-column-start: 7;
-    }
-    .col-start-8 {
-        --grid-column-start: 8;
-    }
-    .col-start-9, .col-start-two-third, .col-start-two-thirds {
-        --grid-column-start: 9;
-    }
-    .col-start-10, .col-start-three-quarter, .col-start-three-quarters {
-        --grid-column-start: 10;
-    }
-    .col-start-11 {
-        --grid-column-start: 11;
-    }
-    .col-start-12 {
-        --grid-column-start: 12;
-    }
 }
-/* CSS flexbox functionality. The first class assigns a container to be a flex box, and additional assignments determine behavior. Like with the grids, the goal is to be able to assign classes within the HTML to handle broad functionality and placement. */
+/* 
+ * CSS Flexboxes
+ * Any container can be assigned flexbox functionality. Additional classes after flex determine behavior like flex direction and more.
+ */
 .flex {
     display: flex;
-    gap: var(--grid-gap);
-    margin: var(--grid-gap) auto;
+    gap: var(--flex-gap);
+    margin: var(--flex-margin) auto;
 }
-.mobile-flex-columns, .mobile-flex-column {
+.flex-col {
     flex-direction: column;
 }
-.mobile-flex-columns-reverse, .mobile-flex-column-reverse {
-    flex-direction: column-reverse;
-}
-.mobile-flex-rows, .mobile-flex-row {
+.flex-row {
     flex-direction: row;
 }
-.mobile-flex-rows-reverse, .mobile-flex-row-reverse {
-    flex-direction: row-reverse;
-}
-.flex-wrap {
-    flex-wrap: wrap;
-}
-.center {
+.center { /* Can be used more generically to set anything centered, as well as in conjunction with flexbox. */
     text-align: center;
     justify-content: center;
     align-content: center;
@@ -180,23 +163,23 @@ img {
 }
 .stretch {
     align-items: stretch;
-    align-content: stretch;
+}
+.between {
+    justify-content: space-between;
+    align-content: space-between;
 }
 .evenly {
     align-content: space-evenly;
     justify-content: space-evenly;
 }
-@media (min-width: 768px) {
-    .flex-columns, .flex-column {
+@media ( min-width: 48rem ) { /* Tablet 768 */
+    .md-flex-col {
         flex-direction: column;
     }
-    .flex-columns-reverse, .flex-column-reverse {
-        flex-direction: column-reverse;
-    }
-    .flex-rows, .flex-row {
+    .md-flex-row {
         flex-direction: row;
     }
-    .flex-rows-reverse, .flex-row-reverse {
-        flex-direction: row-reverse;
-    }
+}
+.no-gap { /* Remove the gap on either a flexbox or a grid container. */
+    gap: 0;
 }

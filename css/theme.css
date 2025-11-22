@@ -1,84 +1,288 @@
 :root {
-    --color-primary: #c7b59b;
-    --color-secondary: #990000;
-    --color-tertiary: #990000;
-    --color-white: #fff;
+    --base-value: clamp(16px, 1.5vw, 18px);
+    --content-max-width: 900px;
+
+    --color-primary: #ddccbb;
+    --color-secondary: #E82356;
+    --color-tertiary: #ccaa66;
+    --color-white: #ffffff;
     --color-gray-100: #e7e7e7;
     --color-gray-200: #999;
-    --color-gray-300: #434445;
-    --color-gray-400: #1b1c1d;
-    --color-black: #0d0e0f;
-    --color-black-overlay: rgb(from var(--color-black) r g b / 0.5);
+    --color-gray-300: #515253;
+    --color-gray-400: #28292a;
+    --color-black: #080b0c;
+    --color-black-trans: rgb(from var(--color-black) r g b / 0.5);
+    --color-black-gradient: linear-gradient(180deg, var(--color-black-trans) 50%, var(--color-black));
 
-    --font-sans: "Public Sans", system-ui, sans-serif;
-    --font-serif: "Newsreader", Times, serif;
-    --font-size-11: 0.6875rem;
+    --font-sans: "Public Sans", system-ui, Arial, sans-serif;
+    --font-serif: "EB Garamond", Garamond, serif;
+    --font-size-10: 0.625rem;
     --font-size-12: 0.75rem;
     --font-size-16: 1rem;
-    --font-size-20: 1.25rem;
-    --font-size-32: clamp(1.625rem, 6vw, 2rem);
-    --font-size-48: clamp(2rem, 8vw, 3rem);
+    --font-size-24: clamp(1.125rem, 2vw, 1.5rem);
+    --font-size-32: clamp(1.5rem, 3vw, 1.875rem);
+    --font-size-72: 4.5rem;
 
-    --line-height-base-value: 1;
-    --line-height-single: var(--line-height-base-value);
-    --line-height-heading: calc(var(--line-height-base-value) * 1.38);
-    --line-height-body: calc(var(--line-height-base-value) * 1.9);
-    --line-height-double: calc(var(--line-height-base-value) * 2);
-    --letter-spacing-s: 0.2px;
-    --letter-spacing-m: 0.75px;
-    --letter-spacing-l: 1.25px;
-    --letter-spacing-xl: 2px;
+    --line-height-base: 1;
+    --line-height-single: var(--line-height-base);
+    --line-height-150: calc(var(--line-height-base) * 1.5);
+    --line-height-double: calc(var(--line-height-base) * 2);
+    --letter-spacing-tighter: -0.1rem;
+    --letter-spacing-tight: -0.01rem;
+    --letter-spacing-normal: 0;
+    --letter-spacing-loose: 0.075rem;
+    --letter-spacing-looser: 0.15rem;
+}
+/* 
+ * 
+ * Phosphor icons. 
+ *
+ */
+.ph-light {
+    font-size: 2rem;
+    width: min-content;
+}
+.ph-bold {
+    font-size: 1rem;
+    width: min-content;
 }
 html {
-    background-color: var(--color-black);
-    color: var(--color-gray-100);
+    background-color: var(--color-gray-100);
+    color: var(--color-black);
 }
-h1 {
+p {
     font-family: var(--font-serif);
-    font-size: clamp(4rem, 12vw, 8rem);
-    font-weight: 300;
-    letter-spacing: -2.5px;
-    margin: var(--spacing-l) 0;
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-150);
+    font-style: normal;
+    font-weight: 400;
 }
-.teaser /* Coming soon screen content... */ {
-    background: linear-gradient(var(--color-black-overlay), var(--color-black-overlay));
+p a {
+    color: var(--color-black);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px !important;
+    text-decoration-color: var(--color-secondary);
+    transition: all 0.3s ease;
+}
+p a:hover {
+    color: var(--color-secondary);
+    text-decoration-color: transparent;
+}
+p.lore {
+    font-family: var(--font-sans);
+    font-style: italic;
+    letter-spacing: var(--letter-spacing-tight);
+}
+p + p {
+    padding-top: var(--spacing-100);
+}
+h2 {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-72);
+    line-height: var(--line-height-single);
+    font-style: italic;
+    letter-spacing: var(--letter-spacing-tighter);
+    font-weight: 400;
+}
+.background {
+    background-color: var(--color-gray-100);
+}
+.wallpaper { /* Theme-specific utility class "wallpaper" will contain any image or video to the container it's inside. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    object-fit: cover;
+}
+/* 
+ *
+ *
+ * Base page content is broken into "prose" and "sidebar" containers, which have unique stylings and interactions with the skeleton.css grid.
+ *
+ *
+ */
+.prose {
+    grid-column-start: 1;
+}
+.sidebar {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-12);
+    padding-bottom: var(--spacing-200);
+}
+.sidebar p {
+    font-family: inherit;
+    font-size: inherit;
+    flex: initial;
+}
+.sidebar > .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-50);
+    padding: var(--spacing-50) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+@media (min-width: 48rem) {
+    .prose {
+        grid-row-start: 1;
+    }
+    .sidebar {
+        grid-column-start: 9;
+    }
+}
+/* 
+ *
+ *
+ * Button styles.
+ *
+ *
+ */
+.button-tertiary {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-12);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-loose);
+    transition: all 0.3s ease;
+}
+.button-tertiary {
+    padding: var(--spacing-50);
+    color: var(--color-white);
+    text-decoration: underline !important;
+    text-underline-offset: var(--spacing-50);
+    text-decoration-thickness: 1px !important;
+    text-decoration-color: var(--color-tertiary) !important;
+    transition: all 0.3s ease;
+}
+.button-tertiary:hover, .button-tertiary:active, .nav-selected /* This class selector is applied to an active page in the navigation */ {
+    color: var(--color-tertiary);
+    text-decoration-color: transparent !important;
+}
+/* 
+ * 
+ * Hero and opening graphics and styling. 
+ *
+ */
+p.subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-10);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: var(--letter-spacing-loose);
+}
+@media (min-width: 48rem) {
+    p.subtitle {
+        font-size: var(--font-size-12);
+    }
+}
+.header {
+    background: var(--color-black-gradient);
     display: flex;
     flex-direction: column;
     position: relative;
     text-align: center;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     color: var(--color-white);
 }
-.teaser > video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -10;
+.opener {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: var(--spacing-500) 0;
 }
-footer {
-    background-color: transparent;
+
+.opener p {
+    font-size: var(--font-size-32);
+    line-height: var(--line-height-150);
+    font-weight: 400;
+}
+/* 
+ * 
+ * Chapter markers.
+ *
+ */
+.chapter {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
     width: 100%;
-    color: white;
-    margin: 0;
-    position: fixed;
-    bottom: 0;
-    transition: all 0.3s;
-    z-index: 1;
-    padding: var(--spacing-l) 0;
 }
-footer > img {
-    width: 350px;
-    margin-bottom: var(--spacing-s);
+.chapter .wallpaper {
+    animation: parallax linear;
+    animation-timeline: view(-2rem); 
 }
-footer .label {
-    font-size: 9px;
+@keyframes parallax {
+  from {
+    top: -10rem;
+  }
+  to {
+    top: 10rem;
+  }
+}
+.ch-plate {
+    display: flex;
+    width: 22rem;
+    height: 30rem;
+    padding: var(--spacing-100);
+    background-color: var(--color-white);
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
+}
+.ch-outline {
+    display: flex;
+    padding: var(--spacing-100);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+    border: thick double var(--color-gray-100);
+}
+.ch-outline > .description {
     font-family: var(--font-sans);
+    font-size: var(--font-size-12);
     text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: var(--letter-spacing-s);
+    width: 15ch;
+}
+.ch-title {
+    display: flex;
+    padding-bottom: var(--spacing-300);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-200);
+    align-self: stretch;
+}
+.ch-title > .eyebrow {
+    font-size: var(--font-size-24);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-looser);
+    line-height: var(--line-height-single);
+}
+.ch-title > hr {
+    width: 3rem;
+}
+/* 
+ *
+ * Footer.
+ *
+ */
+footer {
+    background: var(--color-white);
+}
+footer p {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-12);
 }
