@@ -188,6 +188,7 @@ p.subtitle {
     text-align: center;
     justify-content: center;
     align-items: center;
+    min-height: 600px;
     height: 80vh;
     width: 100%;
     color: var(--color-white);
@@ -215,6 +216,7 @@ p.subtitle {
     text-align: center;
     justify-content: center;
     align-items: center;
+    min-height: 600px;
     height: 90vh;
     width: 100%;
 }
