@@ -1,3 +1,4 @@
+![screenshot](assets/ch-i-splash.jpg)
 # Anthology CTM
 
 This repository is the archive for **Anthology**, a series of Complete the Monument (CTM) maps for modern Minecraft created by Joey Sweener. 
