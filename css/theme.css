@@ -156,11 +156,11 @@ h2 {
     text-decoration: underline !important;
     text-underline-offset: var(--spacing-50);
     text-decoration-thickness: 1px !important;
-    text-decoration-color: var(--color-tertiary) !important;
+    text-decoration-color: var(--color-secondary) !important;
     transition: all 0.3s ease;
 }
 .button-tertiary:hover, .button-tertiary:active, .nav-selected /* This class selector is applied to an active page in the navigation */ {
-    color: var(--color-tertiary);
+    color: var(--color-secondary);
     text-decoration-color: transparent !important;
 }
 /* 
