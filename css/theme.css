@@ -1,9 +1,9 @@
 :root {
     --base-value: clamp(16px, 1.5vw, 18px);
-    --content-max-width: 900px;
+    --content-max-width: 90rem;
 
-    --color-primary: #ddccbb;
-    --color-secondary: #E82356;
+    --color-primary: #E82356;
+    --color-scondary: #ddccbb;
     --color-tertiary: #ccaa66;
     --color-white: #ffffff;
     --color-gray-100: #e7e7e7;
@@ -22,6 +22,7 @@
     --font-size-24: 1.5rem;
     --font-size-32: clamp(1.5rem, 3vw, 1.875rem);
     --font-size-72: 4.5rem;
+    --font-size-clamp-title: clamp(3.5rem, 5vw, 4.5rem);
 
     --line-height-base: 1;
     --line-height-single: var(--line-height-base);
@@ -46,6 +47,11 @@
     font-size: 1rem;
     width: min-content;
 }
+/* 
+ * 
+ * Typography and other basics.
+ *
+ */
 html {
     background-color: var(--color-gray-100);
     color: var(--color-black);
@@ -62,11 +68,11 @@ p a {
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px !important;
-    text-decoration-color: var(--color-secondary);
+    text-decoration-color: var(--color-primary);
     transition: all 0.3s ease;
 }
 p a:hover {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     text-decoration-color: transparent;
 }
 p.lore {
@@ -79,171 +85,47 @@ p + p {
 }
 h2 {
     font-family: var(--font-serif);
-    font-size: var(--font-size-72);
+    font-size: var(--font-size-clamp-title);
     line-height: var(--line-height-single);
     font-style: italic;
     letter-spacing: var(--letter-spacing-tighter);
     font-weight: 400;
 }
-.background {
-    background-color: var(--color-gray-100);
-}
-.wallpaper { /* Theme-specific utility class "wallpaper" will contain any image or video to the container it's inside. */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    object-fit: cover;
-}
 /* 
  *
- *
- * Base page content is broken into "prose" and "sidebar" containers, which have unique stylings and interactions with the skeleton.css grid.
- *
+ * Homepage styles, including the "Chapter" cards (which are used elsewhere).
  *
  */
-.prose {
-    grid-column-start: 1;
+.logo {
+    max-height: 3rem;
+    margin-bottom: var(--spacing-400);
 }
-.sidebar {
-    font-family: var(--font-sans);
-    font-size: var(--font-size-12);
-    padding-bottom: var(--spacing-200);
-}
-.sidebar p {
-    font-family: inherit;
-    font-size: inherit;
-    flex: initial;
-}
-.sidebar > .row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--spacing-50);
-    padding: var(--spacing-50) 0;
-    border-bottom: 1px solid var(--color-gray-200);
-}
-@media (min-width: 48rem) {
-    .prose {
-        grid-row-start: 1;
-    }
-    .sidebar {
-        grid-column-start: 9;
-    }
-}
-/* 
- *
- *
- * Button styles.
- *
- *
- */
-.button-tertiary {
-    font-family: var(--font-serif);
-    font-size: var(--font-size-12);
-    font-weight: 700;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-loose);
-    transition: all 0.3s ease;
-}
-.button-tertiary {
-    padding: var(--spacing-50);
-    color: var(--color-white);
-    text-decoration: underline !important;
-    text-underline-offset: var(--spacing-50);
-    text-decoration-thickness: 1px !important;
-    text-decoration-color: var(--color-secondary) !important;
-    transition: all 0.3s ease;
-}
-.button-tertiary:hover, .button-tertiary:active, .nav-selected /* This class selector is applied to an active page in the navigation */ {
-    color: var(--color-secondary);
-    text-decoration-color: transparent !important;
-}
-/* 
- * 
- * Hero and opening graphics and styling. 
- *
- */
-p.subtitle {
-    font-family: var(--font-sans);
-    font-size: var(--font-size-10);
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: var(--letter-spacing-loose);
-}
-@media (min-width: 48rem) {
-    p.subtitle {
-        font-size: var(--font-size-12);
-    }
-}
-.header {
-    background: var(--color-black-gradient);
+.navigation {
     display: flex;
     flex-direction: column;
     position: relative;
     text-align: center;
     justify-content: center;
     align-items: center;
-    min-height: 600px;
-    height: 80vh;
-    width: 100%;
-    color: var(--color-white);
-}
-.opener {
-    background-color: var(--color-black);
-    color: var(--color-white);
-    padding: var(--spacing-500) 0;
-}
-
-.opener p {
-    font-size: var(--font-size-32);
-    line-height: var(--line-height-150);
-    font-weight: 400;
-}
-/* 
- * 
- * Chapter markers.
- *
- */
-.chapter {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    min-height: 600px;
-    height: 90vh;
+    min-height: 100vh;
     width: 100%;
 }
-.chapter .wallpaper {
-    animation: parallax linear;
-    animation-timeline: view(-2rem); 
-}
-@keyframes parallax {
-  from {
-    top: -10rem;
-  }
-  to {
-    top: 10rem;
-  }
-}
-.ch-plate {
+.ch-plate { /* Base styling for the chapter plates. */
     display: flex;
-    width: 22rem;
+    max-width: 22rem;
     height: 30rem;
     padding: var(--spacing-100);
-    background-color: var(--color-white);
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-    box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
+    transition: all 0.3s;
+    text-decoration: none;
 }
-.ch-outline {
+.ch-plate {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+.ch-outline { /* Base styling for the chapter plates. */
     display: flex;
     padding: var(--spacing-100);
     flex-direction: column;
@@ -251,7 +133,8 @@ p.subtitle {
     align-items: center;
     flex: 1 0 0;
     align-self: stretch;
-    border: thick double var(--color-gray-100);
+    transition: all 0.3s;
+    border: 1px solid var(--color-primary);
 }
 .ch-outline > .description {
     font-family: var(--font-sans);
@@ -274,7 +157,118 @@ p.subtitle {
     line-height: var(--line-height-single);
 }
 .ch-title > hr {
+    border: none;
+    border-top: 1px solid var(--color-primary);
     width: 3rem;
+}
+.ch-plate:hover, .ch-plate.active {
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border: 1px solid transparent;
+    box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
+}
+.ch-plate:hover .ch-outline, .ch-plate.active .ch-outline {
+    border: 1px solid var(--color-gray-100);
+}
+.ch-plate:hover hr, .ch-plate.active hr {
+    border-top: 1px solid var(--color-gray-400);
+}
+
+@media ( min-width: 64rem ) { /* Laptop 1024 */
+    .lg-span-third {
+        --grid-column-start: unset;
+        --grid-span: span calc(var(--grid-columns) / 3);
+    }
+    #one {
+        grid-column-start: 5;
+    }
+}
+/* 
+ *
+ * On each Chapter page, two sets of containers hold title and prose content.
+ *
+ */
+.chapter {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    min-height: 100vh;
+    width: var(--full-width);
+}
+#ch-i {
+    background: center bottom / cover url(../assets/ch-i-splash.jpg);
+}
+.left, .right {
+    height: unset;
+    width: 100%;
+    padding: var(--spacing-400) 0;
+    align-content: flex-start !important;
+}
+.button-return {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    text-decoration: none;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--base-value);
+    width: calc(var(--base-value) * 2);
+    height: calc(var(--base-value) * 2);
+    transition: all 0.3s;
+    margin-bottom: var(--spacing-400);
+}
+.button-return:hover {
+    color: var(--color-black);
+    background-color: var(--color-gray-100);
+    border: 1px solid transparent;
+}
+@media ( min-width: 64rem ) { /* Laptop 1024 */
+    .chapter {
+        flex-direction: row;
+    }
+    .left, .right {
+        flex: 1;
+        width: 50vw;
+        height: 100vh;
+    }
+    .right {
+        overflow-y: auto;
+    }
+}
+.prose {
+    grid-column-start: 1;
+}
+.sidebar {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-12);
+    padding-bottom: var(--spacing-200);
+}
+.sidebar p {
+    font-family: inherit;
+    font-size: inherit;
+    flex: initial;
+}
+.sidebar > .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-50);
+    padding: var(--spacing-50) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+@media ( min-width: 64rem ) { /* Laptop 1024 */
+    .lg-span-third {
+        --grid-column-start: unset;
+        --grid-span: span calc(var(--grid-columns) / 3);
+    }
+    #one {
+        grid-column-start: 5;
+    }
+    .lg-flex-row {
+        flex-direction: row;
+    }
 }
 /* 
  *
@@ -282,9 +276,33 @@ p.subtitle {
  *
  */
 footer {
-    background: var(--color-white);
+    background: var(--color-black);
+    color: var(--color-white);
 }
 footer p {
     font-family: var(--font-sans);
     font-size: var(--font-size-12);
+}
+footer a {
+    color: var(--color-white);
+}
+/* 
+ * 
+ * Utilities.
+ *
+ */
+.background {
+    background-color: var(--color-gray-100);
+}
+.wallpaper { /* Theme-specific utility class "wallpaper" will contain any image or video to the container it's inside. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    object-fit: cover;
+}
+.overlay { /* Theme-specific utility class "overlay" adds a semi-transparent black background to anything this is applied to. */
+    background: var(--color-black-trans);
 }
