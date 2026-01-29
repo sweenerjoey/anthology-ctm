@@ -275,18 +275,6 @@ h2 {
     padding: var(--spacing-50) 0;
     border-bottom: 1px solid var(--color-gray-200);
 }
-@media ( min-width: 64rem ) { /* Laptop 1024 */
-    .lg-span-third {
-        --grid-column-start: unset;
-        --grid-span: span calc(var(--grid-columns) / 3);
-    }
-    #one {
-        grid-column-start: 5;
-    }
-    .lg-flex-row {
-        flex-direction: row;
-    }
-}
 /* 
  *
  * Footer.
