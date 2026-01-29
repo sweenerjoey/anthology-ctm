@@ -190,17 +190,13 @@ h2 {
 }
 
 @media ( min-width: 64rem ) { /* Laptop 1024 */
-    .lg-span-third {
-        --grid-column-start: unset;
-        --grid-span: span calc(var(--grid-columns) / 3);
-    }
     #one {
         grid-column-start: 5;
     }
 }
 /* 
  *
- * On each Chapter page, two sets of containers hold title and prose content.
+ * On each Chapter page, two sets of containers hold title and "prose" content (itself broken into "sidebar," "prose" and "gallery" segments).
  *
  */
 .chapter {
@@ -254,9 +250,6 @@ h2 {
         overflow-y: auto;
     }
 }
-.prose {
-    grid-column-start: 1;
-}
 .sidebar {
     font-family: var(--font-sans);
     font-size: var(--font-size-12);
@@ -274,6 +267,33 @@ h2 {
     gap: var(--spacing-50);
     padding: var(--spacing-50) 0;
     border-bottom: 1px solid var(--color-gray-200);
+}
+.prose {
+    grid-column-start: 1;
+}
+.gallery {
+    grid-column-start: 1;
+    padding: var(--spacing-200) 0;
+    border-top: 1px solid var(--color-gray-200);
+}
+@media ( min-width: 48rem ) { /* Tablet 768 */
+    .sidebar {
+        grid-row-start: 1;
+        grid-column-start: 9;
+    }
+    .prose {
+        grid-row-start: 1;
+    }
+}
+@media ( min-width: 64rem ) { /* Laptop 1024 */
+    .sidebar {
+        grid-row-start: unset;
+        grid-column-start: unset;
+    }
+    .prose {
+        grid-row-start: unset;
+        grid-column-start: unset;
+    }
 }
 /* 
  *

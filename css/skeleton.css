@@ -1,7 +1,7 @@
 /*
-* Joey Sweener's Skeleton.css V 2.0.0
+* Joey Sweener's Skeleton.css V 2.1.0
 * Copyright 2025 Joey Sweener
-* 11/18/2025
+* 01/29/2026
 */
 
 :root { 
@@ -135,7 +135,57 @@ img {
         --grid-column-start: unset;
         --grid-span: span 11;
     }
-    .md-span-12, .md-span-all, .md-span-full {
+    .md-span-12, .md-span-all {
+        --grid-column-start: 1;
+        --grid-span: span var(--grid-columns);
+    }
+}
+@media ( min-width: 64rem ) { /* Laptop 1024 */
+    .lg-span-1 {
+        --grid-column-start: unset;
+        --grid-span: span 1;
+    }
+    .lg-span-2 {
+        --grid-column-start: unset;
+        --grid-span: span 2;
+    }
+    .lg-span-3, .lg-span-quarter {
+        --grid-column-start: unset;
+        --grid-span: span calc(var(--grid-columns) / 4);
+    }
+    .lg-span-4, .lg-span-third, .lg-span-one-third {
+        --grid-column-start: unset;
+        --grid-span: span calc(var(--grid-columns) / 3);
+    }
+    .lg-span-5 {
+        --grid-column-start: unset;
+        --grid-span: span 5;
+    }
+    .lg-span-6, .lg-span-half, .lg-span-two-quarter, .lg-span-two-quarters {
+        --grid-column-start: unset;
+        --grid-span: span calc(var(--grid-columns) / 2);
+    }
+    .lg-span-7 {
+        --grid-column-start: unset;
+        --grid-span: span 7;
+    }
+    .lg-span-8, .lg-span-two-third, .lg-span-two-thirds {
+        --grid-column-start: unset;
+        --grid-span: span calc((var(--grid-columns) / 3) * 2);
+    }
+    .lg-span-9, .lg-span-three-quarter, .lg-span-three-quarters {
+        --grid-column-start: unset;
+        --grid-span: span calc((var(--grid-columns) / 4) * 3);
+    }
+    .lg-span-10 {
+        --grid-column-start: unset;
+        --grid-span: span 10;
+    }
+    .lg-span-11 {
+        --grid-column-start: unset;
+        --grid-span: span 11;
+    }
+    .lg-span-12, .lg-span-all {
         --grid-column-start: 1;
         --grid-span: span var(--grid-columns);
     }
