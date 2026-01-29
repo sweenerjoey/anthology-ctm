@@ -12,7 +12,6 @@
     --color-gray-400: #28292a;
     --color-black: #080b0c;
     --color-black-trans: rgb(from var(--color-black) r g b / 0.5);
-    --color-black-gradient: linear-gradient(180deg, var(--color-black-trans) 50%, var(--color-black));
 
     --font-sans: "Public Sans", system-ui, Arial, sans-serif;
     --font-serif: "EB Garamond", Garamond, serif;
@@ -52,6 +51,10 @@
  * Typography and other basics.
  *
  */
+ ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-black);
+ }
 html {
     background-color: var(--color-gray-100);
     color: var(--color-black);
@@ -161,17 +164,29 @@ h2 {
     border-top: 1px solid var(--color-primary);
     width: 3rem;
 }
-.ch-plate:hover, .ch-plate.active {
+.ch-plate:hover {
     color: var(--color-black);
     background-color: var(--color-white);
     border: 1px solid transparent;
     box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
 }
-.ch-plate:hover .ch-outline, .ch-plate.active .ch-outline {
+.ch-plate:hover .ch-outline {
     border: 1px solid var(--color-gray-100);
 }
-.ch-plate:hover hr, .ch-plate.active hr {
+.ch-plate:hover hr {
     border-top: 1px solid var(--color-gray-400);
+}
+.ch-plate.active, .ch-plate.active .ch-outline {
+    color: var(--color-primary);
+    border: unset;
+    background-color: transparent;
+    box-shadow: unset;
+    height: 100%;
+    padding-top: 0;
+    padding-bottom: var(--spacing-200);
+}
+.ch-plate.active hr {
+    border-color: var(--color-primary);
 }
 
 @media ( min-width: 64rem ) { /* Laptop 1024 */
@@ -197,10 +212,10 @@ h2 {
     width: var(--full-width);
 }
 #ch-i {
-    background: center bottom / cover url(../assets/ch-i-splash.jpg);
+    background: linear-gradient(rgb(from var(--color-black) r g b / 0.66)), center bottom / cover url(../assets/ch-i-splash.jpg), var(--color-primary);
 }
 .left, .right {
-    height: unset;
+    height: 650px;
     width: 100%;
     padding: var(--spacing-400) 0;
     align-content: flex-start !important;
@@ -213,15 +228,17 @@ h2 {
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: var(--base-value);
-    width: calc(var(--base-value) * 2);
-    height: calc(var(--base-value) * 2);
+    font-size: calc(var(--base-value) * 1.5);
+    width: calc(var(--base-value) * 3 );
+    height: calc(var(--base-value) * 3 );
     transition: all 0.3s;
-    margin-bottom: var(--spacing-400);
+}
+.button-return > .ph-light {
+    font-size: inherit;
 }
 .button-return:hover {
     color: var(--color-black);
-    background-color: var(--color-gray-100);
+    background-color: var(--color-primary);
     border: 1px solid transparent;
 }
 @media ( min-width: 64rem ) { /* Laptop 1024 */
