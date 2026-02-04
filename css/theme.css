@@ -74,7 +74,7 @@ p a {
     text-decoration-color: var(--color-primary);
     transition: all 0.3s ease;
 }
-p a:hover {
+p a:hover, p a:active {
     color: var(--color-primary);
     text-decoration-color: transparent;
 }
@@ -164,29 +164,17 @@ h2 {
     border-top: 1px solid var(--color-primary);
     width: 3rem;
 }
-.ch-plate:hover {
+.ch-plate:hover, .ch-plate:active {
     color: var(--color-black);
     background-color: var(--color-white);
     border: 1px solid transparent;
     box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
 }
-.ch-plate:hover .ch-outline {
+.ch-plate:hover .ch-outline, .ch-plate:active .ch-outline {
     border: 1px solid var(--color-gray-100);
 }
-.ch-plate:hover hr {
+.ch-plate:hover hr, .ch-plate:active hr {
     border-top: 1px solid var(--color-gray-400);
-}
-.ch-plate.active, .ch-plate.active .ch-outline {
-    color: var(--color-primary);
-    border: unset;
-    background-color: transparent;
-    box-shadow: unset;
-    height: 100%;
-    padding-top: 0;
-    padding-bottom: var(--spacing-200);
-}
-.ch-plate.active hr {
-    border-color: var(--color-primary);
 }
 
 @media ( min-width: 64rem ) { /* Laptop 1024 */
@@ -232,7 +220,7 @@ h2 {
 .button-return > .ph-light {
     font-size: inherit;
 }
-.button-return:hover {
+.button-return:hover, .button-return:active {
     color: var(--color-black);
     background-color: var(--color-primary);
     border: 1px solid transparent;
