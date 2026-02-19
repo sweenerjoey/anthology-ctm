@@ -19,8 +19,9 @@
     --font-size-12: 0.75rem;
     --font-size-16: 1rem;
     --font-size-24: 1.5rem;
-    --font-size-32: clamp(1.5rem, 3vw, 1.875rem);
+    --font-size-32: 2rem;
     --font-size-72: 4.5rem;
+    --font-size-clamp-about: clamp(1.125rem, 2.5vw, 1.5rem);
     --font-size-clamp-title: clamp(3.5rem, 5vw, 4.5rem);
 
     --line-height-base: 1;
@@ -111,7 +112,7 @@ h2 {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    width: 100%;
+    width: var(--full-width);
 }
 .ch-plate { /* Base styling for the chapter plates. */
     display: flex;
@@ -188,11 +189,67 @@ h2 {
 .ch-plate.active hr {
     border-color: var(--color-primary);
 }
+.button-about {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-400);
+    padding: calc(var(--base-value) * 0.66) var(--base-value);
+    transition: all 0.3s;
+}
+.button-about > .ph-light {
+    font-size: inherit;
+}
+.button-about:hover, .button-about:active {
+    color: var(--color-black);
+    background-color: var(--color-primary);
+    border: 1px solid transparent;
+}
 
 @media ( min-width: 64rem ) { /* Laptop 1024 */
     #one {
         grid-column-start: 5;
     }
+}
+/* 
+ * 
+ *  About page styles.
+ *
+ */
+.logo-small {
+    max-height: 1.5rem;
+    margin-bottom: var(--spacing-100);
+}
+.about {
+    margin: 0 auto;
+    width: var(--content-width);
+    max-width: 48rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: var(--spacing-600);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-clamp-about);
+    color: var(--color-white);
+}
+.about p {
+    font-size: inherit;
+    font-family: inherit;
+}
+#about {
+    background: linear-gradient(rgb(from var(--color-black) r g b / 0.66)), center bottom / cover url(../assets/screenshots/2026-02-18_20.24.45.png), var(--color-primary);
+}
+.about p a {
+    color: var(--color-white);
 }
 /* 
  *
