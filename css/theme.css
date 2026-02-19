@@ -251,6 +251,8 @@ h2 {
 .about p a {
     color: var(--color-white);
 }
+.about p a:hover {
+    color: var(--color-primary);
 /* 
  *
  * On each Chapter page, two sets of containers hold title and "prose" content (itself broken into "sidebar," "prose" and "gallery" segments).
