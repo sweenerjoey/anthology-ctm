@@ -1,4 +1,4 @@
-![Anthology logo in vermilion displayed over an oil painting.](assets/git-hero.png)
+![Anthology logo in vermilion displayed over Benjamin West's 'Death on a Pale Horse (1796).'](assets/git-hero.png)
 # Anthology CTM
 
 This repository is the archive for **Anthology**, a series of Complete the Monument (CTM) maps for modern Minecraft created by Joey Sweener. 
