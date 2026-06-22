@@ -1,4 +1,4 @@
-![screenshot](assets/git-hero.png)
+![The Mill, Rembrandt van Rijn, c. 1645–1648. Courtesy National Gallery of Art, Washington.](assets/git-hero.png)
 # Anthology CTM
 
 This repository is the archive for **Anthology**, a series of Complete the Monument (CTM) maps for modern Minecraft created by Joey Sweener. 
