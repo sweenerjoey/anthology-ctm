@@ -3,7 +3,7 @@
     --content-max-width: 90rem;
 
     --color-primary: #E82356;
-    --color-scondary: #ddccbb;
+    --color-secondary: #ddccbb;
     --color-tertiary: #ccaa66;
     --color-white: #ffffff;
     --color-gray-100: #e7e7e7;
@@ -244,9 +244,6 @@ h2 {
 .about p {
     font-size: inherit;
     font-family: inherit;
-}
-#about {
-    background: linear-gradient(rgb(from var(--color-black) r g b / 0.66)), center bottom / cover url(../assets/screenshots/2026-02-18_20.24.45.png), var(--color-primary);
 }
 .about p a {
     color: var(--color-white);
