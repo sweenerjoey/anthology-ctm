@@ -1,3 +1,32 @@
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../assets/fonts/EBGaramond-VariableFont_wght.ttf') format('opentype');
+    font-weight: 400 800;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../assets/fonts/EBGaramond-Italic-VariableFont_wght.ttf') format('opentype');
+    font-weight: 400 800;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Public Sans';
+    src: url('../assets/fonts/PublicSans-VariableFont_wght.ttf') format('opentype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Public Sans';
+    src: url('../assets/fonts/PublicSans-Italic-VariableFont_wght.ttf') format('opentype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
     --base-value: clamp(16px, 1.5vw, 18px);
     --content-max-width: 90rem;
@@ -13,8 +42,8 @@
     --color-black: #080b0c;
     --color-black-trans: rgb(from var(--color-black) r g b / 0.5);
 
-    --font-sans: "Public Sans", system-ui, Arial, sans-serif;
-    --font-serif: "EB Garamond", Garamond, serif;
+    --font-sans: 'Public Sans', Arial, sans-serif;
+    --font-serif: 'EB Garamond', serif;
     --font-size-10: 0.625rem;
     --font-size-12: 0.75rem;
     --font-size-16: 1rem;
@@ -89,6 +118,7 @@ p + p {
 }
 h2 {
     font-family: var(--font-serif);
+    font-feature-settings: 'dlig' on, 'hlig' on, 'swsh' on;
     font-size: var(--font-size-clamp-title);
     line-height: var(--line-height-single);
     font-style: italic;
@@ -144,7 +174,7 @@ h2 {
     font-family: var(--font-sans);
     font-size: var(--font-size-12);
     text-transform: uppercase;
-    width: 15ch;
+    width: 21ch;
 }
 .ch-title {
     display: flex;
@@ -384,6 +414,14 @@ footer a {
     height: 100%;
     z-index: -10;
     object-fit: cover;
+}
+.wallpaper.hover { /* Additional utility class for the home page, allows images fade up in the background on card hovers.*/
+    opacity: 0;
+    z-index: -1;
+    transition: all ease 0.5s;
+}
+a:hover .wallpaper.hover {
+    opacity: 1;
 }
 .overlay { /* Theme-specific utility class "overlay" adds a semi-transparent black background to anything this is applied to. */
     background: var(--color-black-trans);
