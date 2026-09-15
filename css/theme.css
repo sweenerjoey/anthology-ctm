@@ -53,7 +53,7 @@
     --font-size-clamp-about: clamp(1.125rem, 2.5vw, 1.5rem);
     --font-size-clamp-title: clamp(3.5rem, 5vw, 4.5rem);
 
-    --line-height-base: 1;
+    --line-height-base: 100%;
     --line-height-single: var(--line-height-base);
     --line-height-150: calc(var(--line-height-base) * 1.5);
     --line-height-double: calc(var(--line-height-base) * 2);
