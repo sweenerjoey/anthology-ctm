@@ -1,4 +1,4 @@
-const n = 100;
+const n = 60;
 const containers = document.querySelectorAll(".embers");
 
 containers.forEach((container) => {
