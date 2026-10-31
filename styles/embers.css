@@ -1,5 +1,5 @@
 :root {
-  --color-ember-100: #E82356;
+  --color-ember-100: var(--color-primary);
   --color-ember-200: #650A0F;
   --color-ember-300: #180809;
   --ember-size: 0.25rem;
@@ -11,9 +11,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 10;
   overflow: hidden;
   pointer-events: none;
+  background: linear-gradient(0deg, rgb(from var(--color-ember-100) r g b / 0.12) -5%, transparent 25%);
 }
 
 .embers i {

@@ -42,24 +42,35 @@
 
     --font-sans: 'Public Sans', Arial, sans-serif;
     --font-serif: 'EB Garamond', serif;
-    --font-size-10: 0.625rem;
-    --font-size-12: 0.75rem;
-    --font-size-16: 1rem;
-    --font-size-24: 1.5rem;
-    --font-size-32: 2rem;
-    --font-size-72: 4.5rem;
-    --font-size-clamp-about: clamp(1.125rem, 2.5vw, 1.5rem);
-    --font-size-clamp-title: clamp(3.5rem, 5vw, 4.5rem);
+
+    --pt-bourgeois: calc(var(--base-value) * 0.75);
+    --pt-long-primer: calc(var(--base-value) * 0.833);
+    --pt-small-pica: calc(var(--base-value) * 0.917);
+    --pt-pica: var(--base-value);
+    --pt-english: calc(var(--base-value) * 1.167);
+    --pt-great-primer: calc(var(--base-value) * 1.5);
+    --pt-paragon: calc(var(--base-value) * 1.667);
+    --pt-double-pica: calc(var(--base-value) * 2);
+    --pt-double-english: calc(var(--base-value) * 2.333);
+    --pt-double-great-primer: calc(var(--base-value) * 3);
+    --pt-canon: calc(var(--base-value) * 4);
+    --pt-double-canon: calc(var(--base-value) * 4.666);
+    --pt-inch: calc(var(--base-value) * 6);
+    --pt-eight-pica: calc(var(--base-value) * 8);
+
+    --font-size-clamp-about: clamp(var(--pt-english), 2.5vw, var(--pt-great-primer));
 
     --line-height-base: 100%;
     --line-height-single: var(--line-height-base);
-    --line-height-150: calc(var(--line-height-base) * 1.5);
+    --line-height-normal: calc(var(--line-height-base) * 1.33);
+    --line-height-loose: calc(var(--line-height-base) * 1.6);
     --line-height-double: calc(var(--line-height-base) * 2);
     --letter-spacing-tighter: -0.03em;
     --letter-spacing-tight: -0.01em;
     --letter-spacing-normal: 0;
     --letter-spacing-loose: 0.025em;
     --letter-spacing-looser: 0.05em;
+
 }
 /* 
  * 
@@ -89,8 +100,8 @@ html {
 }
 p {
     font-family: var(--font-serif);
-    font-size: var(--font-size-16);
-    line-height: var(--line-height-150);
+    font-size: var(--pt-pica);
+    line-height: var(--line-height-loose);
     font-style: normal;
     font-weight: 400;
 }
@@ -117,22 +128,55 @@ p + p {
 h2 {
     font-family: var(--font-serif);
     font-feature-settings: 'dlig' on, 'hlig' on, 'swsh' on;
-    font-size: var(--font-size-clamp-title);
+    font-size: var(--pt-canon);
     line-height: var(--line-height-single);
     font-style: italic;
     letter-spacing: var(--letter-spacing-tighter);
     font-weight: 400;
 }
-/* 
+/*
  *
- * Homepage styles, including the "Chapter" cards (which are used elsewhere, and I should probably fix?).
+ * Buttons
  *
  */
-.logo {
-    max-height: 2.25rem;
-    margin-top: var(--spacing-200);
-    margin-bottom: var(--spacing-400);
+.btn-text, .btn-icon {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    text-decoration: none;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+ }
+.btn-text {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    padding: var(--spacing-50) var(--spacing-100);
 }
+.btn-icon {
+    font-size: calc(var(--base-value) * 1.5);
+    width: calc(var(--base-value) * 3 );
+    height: calc(var(--base-value) * 3 );
+}
+.btn-text:hover, .btn-text:active {
+    color: var(--color-black);
+    background-color: var(--color-primary);
+    border: 1px solid transparent;
+}
+.btn-icon > .ph-light {
+    font-size: inherit;
+}
+.btn-icon:hover, .btn-icon:active {
+    color: var(--color-black);
+    background-color: var(--color-primary);
+    border: 1px solid transparent;
+}
+/* 
+ *
+ * Homepage navigation and associated tarot card styles.
+ *
+ */
 .navigation {
     display: flex;
     flex-direction: column;
@@ -143,102 +187,122 @@ h2 {
     min-height: 100svh;
     width: var(--full-width);
 }
-.ch-plate { /* Base styling for the chapter plates. */
+.navigation .grid {
+    gap: 0;
+
+    @media (min-width: 1024px ) {
+        gap: var(--grid-gap);
+    }
+}
+.tarot {
     display: flex;
-    max-width: 22rem;
-    height: 30rem;
-    padding: var(--spacing-100);
+    flex-direction: column;
+    padding: 1rem 1.25rem;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
     text-decoration: none;
+    border: 1px solid transparent;
+
+    @media ( min-width: 1024px ) {
+        max-width: 22rem;
+        height: 30rem;
+        border: 1px solid var(--color-primary);
+        padding: var(--spacing-100);
+    }
 }
-.ch-plate {
+.tarot:hover, .tarot:active {
+    color: var(--color-black);
+    background-color: var(--color-white);
+    box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
+    border: 1px solid transparent;
+
+    & .tarot-inner {
+        color: var(--color-black);
+        border-bottom: 1px solid transparent;
+    }
+
+    @media (min-width: 1024px) {
+        & .tarot-inner {
+            border: 1px solid var(--color-gray-100);   
+        }
+        & hr {
+            border-top: 1px solid var(--color-gray-400);
+        }
+    }
+}
+.tarot-inner {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-gap: var(--grid-gap);
+    grid-template-areas: "b b b a";
+    align-content: center;
+    align-items: center;
+
     color: var(--color-primary);
-    border: 1px solid var(--color-primary);
+    padding: 1rem 0 1.5rem;
+    border-bottom: 1px solid var(--color-primary);
+
+    & i {
+        grid-area: a;
+        justify-self: end;
+    }
+    & .title {
+        grid-area: b;
+        text-align: left;
+
+        & .eyebrow {
+            font-size: var(--pt-small-pica);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-looser);
+            line-height: var(--line-height-single);
+            margin-bottom: var(--spacing-100);
+        }
+    }
+    & hr, .description {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1 0 0;
+        align-self: stretch;
+        transition: all 0.3s ease;
+        border: 1px solid var(--color-primary);
+
+        & .title {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-100);
+            padding-bottom: var(--spacing-200);
+            align-items: center;
+            text-align: center;
+            align-self: stretch;
+
+            & .eyebrow {
+                font-size: var(--pt-english);
+            }
+        }
+        & hr, .description {
+            display: inline-block;
+        }
+    }
 }
-.ch-outline { /* Base styling for the chapter plates. */
-    display: flex;
-    padding: var(--spacing-100);
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1 0 0;
-    align-self: stretch;
-    transition: all 0.3s;
-    border: 1px solid var(--color-primary);
-}
-.ch-outline > .description {
-    font-family: var(--font-sans);
-    font-size: var(--font-size-12);
-    text-transform: uppercase;
-    width: 21ch;
-}
-.ch-title {
-    display: flex;
-    padding-bottom: var(--spacing-300);
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-200);
-    align-self: stretch;
-}
-.ch-title > .eyebrow {
-    font-size: var(--font-size-24);
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-looser);
-    line-height: var(--line-height-single);
-}
-.ch-title > hr {
+.tarot hr {
     border: none;
     border-top: 1px solid var(--color-primary);
     width: 3rem;
 }
-.ch-plate:hover, .ch-plate:active {
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border: 1px solid transparent;
-    box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
-}
-.ch-plate:hover .ch-outline, .ch-plate:active .ch-outline {
-    border: 1px solid var(--color-gray-100);
-}
-.ch-plate:hover hr, .ch-plate:active hr {
-    border-top: 1px solid var(--color-gray-400);
-}
-.ch-plate.active, .ch-plate.active .ch-outline {
-    color: var(--color-primary);
-    border: unset;
-    background-color: transparent;
-    box-shadow: unset;
-    height: 100%;
-    padding-top: 0;
-    padding-bottom: var(--spacing-200);
-}
-.ch-plate.active hr {
-    border-color: var(--color-primary);
-}
-.button-about {
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
+.tarot .description {
     font-family: var(--font-sans);
+    font-size: var(--pt-bourgeois);
+    line-height: var(--line-height-normal);
     text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: var(--spacing-400);
-    padding: calc(var(--base-value) * 0.66) var(--base-value);
-    transition: all 0.3s;
-}
-.button-about > .ph-light {
-    font-size: inherit;
-}
-.button-about:hover, .button-about:active {
-    color: var(--color-black);
-    background-color: var(--color-primary);
-    border: 1px solid transparent;
+    width: 21ch;
 }
 
 @media ( min-width: 64rem ) { /* Laptop 1024 */
@@ -251,10 +315,6 @@ h2 {
  *  About page styles.
  *
  */
-.logo-small {
-    max-height: 1.5rem;
-    margin-bottom: var(--spacing-100);
-}
 .about {
     margin: 0 auto;
     width: var(--content-width);
@@ -282,7 +342,7 @@ h2 {
 }
 /* 
  *
- * On each Chapter page, two sets of containers hold title and "prose" content (itself broken into "sidebar," "prose" and "gallery" segments).
+ * Chapter overview pages.
  *
  */
 .chapter {
@@ -293,33 +353,54 @@ h2 {
     min-height: 100vh;
     width: var(--full-width);
 }
+.chapter .plate {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    text-decoration: none;
+    height: 100%;
+    color: var(--color-primary);
+    padding-bottom: var(--spacing-200);
+
+    & .manifest {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 0;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+    }
+    & .title {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-100);
+        padding-bottom: var(--spacing-200);
+        align-items: center;
+        text-align: center;
+        align-self: stretch;
+
+        & .eyebrow {
+            font-size: var(--pt-english);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-looser);
+            line-height: var(--line-height-single);
+            margin-bottom: var(--spacing-100);
+        }
+    }
+    & hr {
+        border: none;
+        border-top: 1px solid var(--color-primary);
+        width: 3rem;
+    }
+}
 .left, .right {
     height: 650px;
     width: 100%;
     padding: var(--spacing-400) 0;
     align-content: flex-start !important;
     position: relative;
-}
-.button-return {
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-    text-decoration: none;
-    display: inline-flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-size: calc(var(--base-value) * 1.5);
-    width: calc(var(--base-value) * 3 );
-    height: calc(var(--base-value) * 3 );
-    transition: all 0.3s;
-}
-.button-return > .ph-light {
-    font-size: inherit;
-}
-.button-return:hover, .button-return:active {
-    color: var(--color-black);
-    background-color: var(--color-primary);
-    border: 1px solid transparent;
 }
 @media ( min-width: 64rem ) { /* Laptop 1024 */
     .chapter {
@@ -336,7 +417,7 @@ h2 {
 }
 .sidebar {
     font-family: var(--font-sans);
-    font-size: var(--font-size-12);
+    font-size: var(--pt-bourgeois);
     padding-bottom: var(--spacing-200);
 }
 .sidebar p {
@@ -390,16 +471,31 @@ footer {
 }
 footer p {
     font-family: var(--font-sans);
-    font-size: var(--font-size-12);
+    font-size: var(--pt-bourgeois);
 }
 footer a {
     color: var(--color-white);
 }
-/* 
- * 
- * Utilities.
+/*
+ *
+ * Anthology logos, utility classes.
  *
  */
+.logo {
+    max-height: var(--pt-paragon);
+    margin-top: var(--spacing-100);
+    margin-bottom: var(--spacing-300);
+
+    @media ( min-width: 1024px ) {
+        max-height: var(--pt-double-english);
+        margin-top: var(--spacing-200);
+        margin-bottom: var(--spacing-400);
+    }
+}
+.logo-small {
+    max-height: var(--pt-paragon);
+    margin-bottom: var(--spacing-100);
+}
 .background {
     background-color: var(--color-gray-100);
 }
@@ -409,10 +505,11 @@ footer a {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -10;
+    z-index: -100;
     object-fit: cover;
+    background-color: var(--color-gray-400);
 }
-.wallpaper.hover { /* Additional utility class for the home page, allows images fade up in the background on card hovers.*/
+.wallpaper.hover { /* Additional utility class for the home page, allows images to fade up in the background on card hovers.*/
     opacity: 0;
     z-index: -1;
     transition: all ease 0.5s;
