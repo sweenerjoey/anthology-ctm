@@ -159,7 +159,7 @@ h2 {
     width: calc(var(--base-value) * 3 );
     height: calc(var(--base-value) * 3 );
 }
-.btn-text:hover, .btn-text:active {
+.btn-text:hover, .btn-text:active, .btn-text:focus {
     color: var(--color-black);
     background-color: var(--color-primary);
     border: 1px solid transparent;
@@ -167,7 +167,7 @@ h2 {
 .btn-icon > .ph-light {
     font-size: inherit;
 }
-.btn-icon:hover, .btn-icon:active {
+.btn-icon:hover, .btn-icon:active, .btn-icon:focus {
     color: var(--color-black);
     background-color: var(--color-primary);
     border: 1px solid transparent;
@@ -182,7 +182,7 @@ h2 {
     flex-direction: column;
     position: relative;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     min-height: 100svh;
     width: var(--full-width);
@@ -212,7 +212,7 @@ h2 {
         padding: var(--spacing-100);
     }
 }
-.tarot:hover, .tarot:active {
+.tarot:hover, .tarot:active, .tarot:focus {
     color: var(--color-black);
     background-color: var(--color-white);
     box-shadow: rgb(from var(--color-black) r g b / 0.2) 0 0 1rem 1rem;
@@ -484,7 +484,7 @@ footer a {
 .logo {
     max-height: var(--pt-paragon);
     margin-top: var(--spacing-100);
-    margin-bottom: var(--spacing-300);
+    margin-bottom: 0;
 
     @media ( min-width: 1024px ) {
         max-height: var(--pt-double-english);
@@ -507,7 +507,7 @@ footer a {
     height: 100%;
     z-index: -100;
     object-fit: cover;
-    background-color: var(--color-gray-400);
+    background-color: var(--color-primary);
 }
 .wallpaper.hover { /* Additional utility class for the home page, allows images to fade up in the background on card hovers.*/
     opacity: 0;
