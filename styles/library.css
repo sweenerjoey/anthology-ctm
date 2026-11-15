@@ -1,5 +1,7 @@
 :root {
   --content-max-width: 900px;
+
+  font-family: var(--font-serif);
 }
 /*
  *
@@ -43,6 +45,17 @@ h3, .accordion-header {
   margin: var(--spacing-200) 0 var(--spacing-50);
   padding-bottom: var(--spacing-50);
   border-bottom: 1px solid var(--color-black);
+}
+ul, ol {
+  padding-left: var(--spacing-100);
+  margin-top: var(--spacing-50);
+  margin-bottom: var(--spacing-100);
+}
+ul {
+  list-style: "– " outside;
+}
+ol {
+  list-style: upper-roman outside;
 }
 /* 
  *
@@ -103,6 +116,9 @@ h3, .accordion-header {
       columns: 1;
       column-gap: 0;
 
+      padding: unset;
+      margin: unset;
+
       font-family: var(--font-serif);
       font-size: var(--pt-english);
       color: var(--color-black);
@@ -150,9 +166,13 @@ h3, .accordion-header {
  *
  */
 .entry {
-  margin-top: var(--spacing-1000);
+  margin-top: var(--spacing-600);
+
+  @media ( min-width: 48rem ) {
+    margin-top: var(--spacing-1000);
+  }
   
-  & p:first-of-type {
+  & > p:first-of-type {
     font-size: var(--font-size-clamp-about);
     line-height: var(--line-height-loose);
     padding: var(--spacing-100) 0;
@@ -169,18 +189,72 @@ h3, .accordion-header {
       margin-left: -0.25em;
     }
   }
+
+  & aside {
+    position: relative;
+    --aside-padding: 1.66em;
+    padding: 1.5em var(--aside-padding);
+    margin: var(--spacing-100) 0 var(--spacing-200);
+
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-black);
+      clip-path: polygon(0 0.66em,0.66em 0.66em,0.66em 0,calc(100% - 0.66em) 0,calc(100% - 0.66em) 0.66em,100% 0.66em,100% calc(100% - 0.66em),calc(100% - 0.66em) calc(100% - 0.66em),calc(100% - 0.66em) 100%,0.66em 100%,0.66em calc(100% - 0.66em),0 calc(100% - 0.66em),0 0.66em,1px  calc(0.66em + 1px),1px calc(100% - 0.66em - 1px),calc(0.66em + 1px) calc(100% - 0.66em - 1px),calc(0.66em + 1px) calc(100% - 1px),calc(100% - 0.66em - 1px) calc(100% - 1px),calc(100% - 0.66em - 1px) calc(100% - 0.66em - 1px),calc(100% - 1px) calc(100% - 0.66em - 1px),calc(100% - 1px) calc(0.66em + 1px),calc(100% - 0.66em - 1px) calc(0.66em + 1px),calc(100% - 0.66em - 1px) 1px,calc(0.66em + 1px) 1px,calc(0.66em + 1px) calc(0.66em + 1px),1px calc(0.66em + 1px));
+;
+    }
+
+    & h3 {
+      font-size: var(--pt-pica);
+      margin: unset;
+      margin-bottom: var(--spacing-50);
+      border: none;
+    }
+
+    &:has(h3) {
+      padding-bottom: var(--aside-padding);
+    }
+
+    &:has(.embers) {
+      background: no-repeat center / cover url(../assets/library/important-warning-background.jpg);
+      color: var(--color-gray-100);
+      clip-path: polygon(0 0.66em,0.66em 0.66em,0.66em 0,calc(100% - 0.66em) 0,calc(100% - 0.66em) 0.66em,100% 0.66em,100% calc(100% - 0.66em),calc(100% - 0.66em) calc(100% - 0.66em),calc(100% - 0.66em) 100%,0.66em 100%,0.66em calc(100% - 0.66em),0 calc(100% - 0.66em));
+
+    }
+    & i {
+      font-size: inherit;
+    }
+  }
+  & img {
+    margin: var(--spacing-50) auto;
+  }
 }
 /*
  *
  * FEATURE: Accordion. Visually looks the same as H3; expands and collapses to show or hide content.
  *
  */
+details {
+  margin-bottom: var(--spacing-200);
+}
 details > summary {
     list-style: none;
     display: inline-flex;
     position: relative;
     align-items: center;
     width: 100%;
+    padding-top: var(--spacing-50);
+
+    transition: all ease 0.3s;
+
+    &:hover {
+      background: var(--color-gray-200);
+      cursor: pointer;
+    }
+    &:active {
+      background: var(--color-gray-200);
+    }
 }
 summary::-webkit-details-marker {
     display: none;
@@ -285,16 +359,19 @@ details[open] > summary:before {
 
       font-family: var(--font-serif);
       font-size: var(--pt-double-canon);
+      line-height: 1;
       font-weight: 600;
 
       padding: 0;
+      padding-right: var(--spacing-50);
       margin: var(--spacing-100);
     }
 
-    & img, video {
+    & img {
       height: 100%;
       width: 100%;
       object-fit: cover;
+      margin: 0;
     }
   }
 }

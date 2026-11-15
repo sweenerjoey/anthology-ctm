@@ -105,6 +105,12 @@ p {
     font-style: normal;
     font-weight: 400;
 }
+li {
+    font-family: var(--font-serif);
+    line-height: var(--line-height-normal);
+    font-style: normal;
+    font-weight: 400;
+}
 p a {
     color: var(--color-black);
     text-decoration: underline;

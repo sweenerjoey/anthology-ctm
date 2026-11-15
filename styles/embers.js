@@ -10,13 +10,15 @@ containers.forEach((container) => {
 
     // Randomize position within each segment
     const offset = (Math.random() - 0.5) * interval * 0.5;
-    const x = interval * (i + 0.5) + offset;
+    const x = Math.round((interval * (i + 0.5) + offset) * 1000) / 1000;
 
     single.style.setProperty("--x", `${x}%`);
 
     // Randomize animation timing
-    single.style.setProperty("--delay", `${Math.random() * 5}s`);
-    single.style.setProperty("--duration", `${3 + Math.random() * 4}s`);
+    const delay = Math.round((Math.random() * 5) * 1000) / 1000;
+    const duration = Math.round((3 + Math.random() * 4) * 1000) / 1000;
+    single.style.setProperty("--delay", `${delay}s`);
+    single.style.setProperty("--duration", `${duration}s`);
 
     return single;
   });
