@@ -33,11 +33,11 @@
 
     --color-primary: #E82356;
     --color-white: #ffffff;
-    --color-gray-100: #e7e7e7;
-    --color-gray-200: #999;
-    --color-gray-300: #515253;
-    --color-gray-400: #28292a;
-    --color-black: #080b0c;
+    --color-gray-100: #eee;
+    --color-gray-200: #ddd;
+    --color-gray-300: #999;
+    --color-gray-400: #515253;
+    --color-black: #0d0e0f;
     --color-black-trans: rgb(from var(--color-black) r g b / 0.5);
 
     --font-sans: 'Public Sans', Arial, sans-serif;
@@ -68,8 +68,8 @@
     --letter-spacing-tighter: -0.03em;
     --letter-spacing-tight: -0.01em;
     --letter-spacing-normal: 0;
-    --letter-spacing-loose: 0.025em;
-    --letter-spacing-looser: 0.05em;
+    --letter-spacing-loose: 0.01em;
+    --letter-spacing-looser: 0.03em;
 
 }
 /* 
@@ -153,6 +153,7 @@ h2 {
     font-family: var(--font-sans);
     text-transform: uppercase;
     padding: var(--spacing-50) var(--spacing-100);
+    margin: var(--spacing-200) var(--spacing-100) 0;
 }
 .btn-icon {
     font-size: calc(var(--base-value) * 1.5);
@@ -225,7 +226,7 @@ h2 {
 
     @media (min-width: 1024px) {
         & .tarot-inner {
-            border: 1px solid var(--color-gray-100);   
+            border: 1px solid var(--color-gray-200);   
         }
         & hr {
             border-top: 1px solid var(--color-gray-400);
@@ -431,7 +432,7 @@ h2 {
     align-items: center;
     gap: var(--spacing-50);
     padding: var(--spacing-50) 0;
-    border-bottom: 1px solid var(--color-gray-200);
+    border-bottom: 1px solid var(--color-gray-300);
 }
 .prose {
     grid-column-start: 1;
@@ -439,7 +440,7 @@ h2 {
 .gallery {
     grid-column-start: 1;
     padding: var(--spacing-200) 0;
-    border-top: 1px solid var(--color-gray-200);
+    border-top: 1px solid var(--color-gray-300);
 }
 @media ( min-width: 48rem ) { /* Tablet 768 */
     .sidebar {
@@ -496,6 +497,10 @@ footer a {
     max-height: var(--pt-paragon);
     margin-bottom: var(--spacing-100);
 }
+.logo-x-small {
+    max-height: var(--pt-great-primer);
+    margin-bottom: var(--spacing-100);
+}
 .background {
     background-color: var(--color-gray-100);
 }
@@ -507,7 +512,11 @@ footer a {
     height: 100%;
     z-index: -100;
     object-fit: cover;
-    background-color: var(--color-primary);
+    background-color: var(--color-black);
+}
+img.wallpaper, video.wallpaper {
+    padding: 0;
+    pointer-events: none;
 }
 .wallpaper.hover { /* Additional utility class for the home page, allows images to fade up in the background on card hovers.*/
     opacity: 0;

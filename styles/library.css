@@ -1,0 +1,455 @@
+:root {
+  --content-max-width: 900px;
+}
+/*
+ *
+ * TYPOGRAPHY overrides from theme.css.
+ *
+ */
+h1 {
+  font-family: var(--font-serif);
+  font-size: var(--pt-double-english);
+  line-height: var(--line-height-single);
+  letter-spacing: var(--letter-spacing-tighter);
+
+  font-weight: 400;
+  font-style: normal;
+  text-align: right;
+
+  margin: var(--spacing-200) 0;
+
+  font-feature-settings: 'dlig' on, 'hlig' on;
+}
+h2 {
+  font-family: var(--font-sans);
+  font-size: var(--pt-paragon);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-tighter);
+
+  font-weight: 400;
+  font-style: normal;
+
+  margin: var(--spacing-100) 0;
+}
+h3, .accordion-header {
+  font-family: var(--font-sans);
+  font-size: var(--pt-english);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-tighter);
+
+  font-weight: 400;
+  font-style: normal;
+
+  margin: var(--spacing-200) 0 var(--spacing-50);
+  padding-bottom: var(--spacing-50);
+  border-bottom: 1px solid var(--color-black);
+}
+/* 
+ *
+ * Chained Library, Table of Contents.
+ *
+ */
+.cover {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 650px;
+    width: var(--full-width);
+
+    color: var(--color-primary);
+    padding: var(--spacing-400);
+}
+.cover h1 {
+  font-size: var(--pt-canon);
+  font-style: italic;
+  text-align: center;
+  font-feature-settings: 'dlig' on, 'hlig' on, 'swsh' on;
+}
+.library {
+  padding-top: var(--spacing-400);
+  padding-bottom: var(--spacing-400);
+
+  & .container {
+    gap: var(--spacing-400);
+  }
+
+  & p:first-of-type {
+    font-size: var(--pt-great-primer);
+    line-height: var(--line-height-loose);
+    padding: var(--spacing-100) 0;
+    text-align: center;
+  }
+
+  & .contents {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    & h2 {
+      max-width: 350px;
+      padding-top: var(--spacing-400);
+      margin: 0 auto;
+    }
+
+    & ul {
+      list-style: none;
+      columns: 1;
+      column-gap: 0;
+
+      font-family: var(--font-serif);
+      font-size: var(--pt-english);
+      color: var(--color-black);
+
+      & li a {
+        display: inline-flex;
+        position: relative;
+        gap: var(--spacing-50);
+        align-items: center;
+
+        width: 100%;
+        height: var(--pt-double-english);
+        padding: 0 var(--spacing-100);
+        text-decoration: none;
+        color: inherit;
+
+        transition: all ease 0.3s;
+
+        &:hover {
+          background: var(--color-gray-200);
+        }
+        &:focus {
+          background: var(--color-gray-200);
+        }
+        &:active {
+          background: var(--color-gray-200);
+        }
+      }
+
+      @media ( min-width: 48rem ) {
+        columns: 2;
+      }
+    }
+
+    & i {
+      color: var(--color-primary);
+      margin: 0 auto;
+      padding-top: var(--spacing-400);
+    }
+  }
+}
+/*
+ *
+ * Chained Library, Single Entry. Each entry begins with a large opening paragraph, which features a versal (drop-cap).
+ *
+ */
+.entry {
+  margin-top: var(--spacing-1000);
+  
+  & p:first-of-type {
+    font-size: var(--pt-great-primer);
+    line-height: var(--line-height-loose);
+    padding: var(--spacing-100) 0;
+
+    &:first-letter {
+      float: left;
+
+      font-size: var(--pt-double-great-primer);
+      text-transform: uppercase;
+      background: url(../assets/library/versal-background.svg) center center / contain no-repeat;
+      padding: 0.75em;
+      margin-right: var(--spacing-50);
+      margin-bottom: calc(var(--spacing-50) * -1);
+      margin-left: -0.25em;
+    }
+  }
+}
+/*
+ *
+ * FEATURE: Accordion. Visually looks the same as H3; expands and collapses to show or hide content.
+ *
+ */
+details > summary {
+    list-style: none;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+}
+summary::-webkit-details-marker {
+    display: none;
+}
+details > summary:before {
+    content: url(../assets/library/caret-right-bold.svg);
+    line-height: 0;
+    display: inline-block;
+    margin: 0.25em;
+    align-self: center;
+
+    transition: all ease 0.15s;
+}
+details[open] > summary:before {
+    content: url(../assets/library/caret-right-bold.svg);
+    transform: rotate(90deg);
+}
+/*
+ *
+ * FEATURE: Dungeon Maps. Features a sticky sidebar to select floors and show corresponding panels.
+ *
+ */
+.disclaimer {
+  aspect-ratio: 1/1;
+  background-color: var(--color-gray-200);
+  padding: var(--spacing-400);
+  font-family: var(--font-sans);
+  font-size: var(--pt-english);
+
+  @media ( min-width: 48rem ) {
+    display: none;
+  }
+}
+.map-radio {
+  display: none;
+}
+
+.map-layout {
+  display: none;
+  min-height: 20vh;
+
+  @media ( min-width: 48rem ) {
+    display: grid;
+    grid-template-areas: "a a a a b b b b b b b b";
+  }
+}
+
+.map-floor-selection {
+  grid-area: a;
+
+  position: sticky;
+  top: var(--spacing-200);
+
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--flex-gap) * 0.5);
+  padding: calc(var(--base-value) * 0.75);
+  height: min-content;
+
+  font-family: var(--font-serif);
+  font-size: var(--pt-english);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid var(--color-black);
+
+  & label {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    user-select: none;
+
+    height: var(--pt-double-english);
+    border: 1px solid var(--color-black);
+    padding: var(--spacing-50) var(--spacing-100);
+
+    transition: all ease 0.3s;
+  }
+
+  & label:hover {
+    border: 3px solid currentColor;
+    background-color: var(--color-gray-200);
+  }
+}
+
+.map-floors {
+  grid-area: b;
+
+  & .panel {
+    display: none;
+    position: relative;
+    height: 100%;
+
+    & .label {
+      position: absolute;
+      width: min-content;
+      bottom: 0;
+      right: 0;
+
+      font-family: var(--font-serif);
+      font-size: var(--pt-double-canon);
+      font-weight: 600;
+
+      padding: 0;
+      margin: var(--spacing-100);
+    }
+
+    & img, video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+#t1:checked~.map-layout .map-floor-selection label[for="t1"],
+#t2:checked~.map-layout .map-floor-selection label[for="t2"],
+#t3:checked~.map-layout .map-floor-selection label[for="t3"],
+#t4:checked~.map-layout .map-floor-selection label[for="t4"],
+#t5:checked~.map-layout .map-floor-selection label[for="t5"],
+#t6:checked~.map-layout .map-floor-selection label[for="t6"],
+#t7:checked~.map-layout .map-floor-selection label[for="t7"],
+#t8:checked~.map-layout .map-floor-selection label[for="t8"],
+#t9:checked~.map-layout .map-floor-selection label[for="t9"] {
+  border: 3px solid currentColor;
+
+  &:before {
+    content: url(../assets/library/map-selector-arrow.svg);
+    position: absolute;
+    align-content: center;
+    top: 50%;
+    left: -0.1em;
+    height: 16px;
+    width: 16px;
+    transform: translateY(-66%);
+  }
+
+  &:after {
+    content: url(../assets/library/map-selector-arrow.svg);
+    position: absolute;
+    align-content: center;
+    top: 50%;
+    right: -0.1em;
+    height: 16px;
+    width: 16px;
+    transform: translateY(-66%) rotateY(180deg);
+  }
+}
+
+#t1:checked~.map-layout .map-floors .panel:nth-child(1),
+#t2:checked~.map-layout .map-floors .panel:nth-child(2),
+#t3:checked~.map-layout .map-floors .panel:nth-child(3),
+#t4:checked~.map-layout .map-floors .panel:nth-child(4),
+#t5:checked~.map-layout .map-floors .panel:nth-child(5),
+#t6:checked~.map-layout .map-floors .panel:nth-child(6),
+#t7:checked~.map-layout .map-floors .panel:nth-child(7),
+#t8:checked~.map-layout .map-floors .panel:nth-child(8),
+#t9:checked~.map-layout .map-floors .panel:nth-child(9) {
+  display: block;
+}
+/*
+ *
+ * FEATURE: Pagination. At the bottom of every library entry, seamlessly navigate to the previous or next page from the footer.
+ *
+ */
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+
+  font-family: var(--font-sans);
+
+  border-top: 1px solid var(--color-black);
+  padding-bottom: var(--spacing-200);
+
+  & .previous, .next {
+    display: flex;
+    gap: var(--spacing-50);
+    flex: 1 0 0;
+    padding: var(--spacing-100);
+    text-decoration: none;
+    color: var(--color-black);
+
+    transition: all ease 0.3s;
+
+    &:hover {
+      background-color: var(--color-gray-200);
+    }
+    &:focus {
+      background-color: var(--color-gray-200);
+    }
+    &:active {
+      background-color: var(--color-gray-200);
+    }
+  }
+
+  & .previous {
+    flex-direction: row;
+
+    & span:before {
+      content: 'Previous: ';
+    }
+
+    & i {
+      transition: all ease 0.3s;
+    }
+
+    &:hover i {
+      transform: translateX(calc(var(--spacing-50) * -1));
+    }
+    &:focus i {
+      transform: translateX(calc(var(--spacing-50) * -1));
+    }
+    &:active i {
+      transform: translateX(calc(var(--spacing-50) * -1));
+    }
+  }
+  & .next {
+    flex-direction: row-reverse;
+
+    & span:before {
+      content: 'Next: ';
+    }
+
+    & i {
+      transition: all ease 0.3s;
+    }
+
+    &:hover i {
+      transform: translateX(calc(var(--spacing-50) * 1));
+    }
+    &:focus i {
+      transform: translateX(calc(var(--spacing-50) * 1));
+    }
+    &:active i {
+      transform: translateX(calc(var(--spacing-50) * 1));
+    }
+  }
+}
+/*
+ *
+ * Footer, Chained Library.
+ *
+ */
+footer {
+  background: var(--color-gray-200);
+  color: var(--color-black);
+}
+footer a {
+  color: inherit;
+}
+footer:has(nav) {
+  background: unset;
+}
+footer:has(.logo-x-small) img {
+  margin-top: var(--spacing-600);
+  margin-bottom: var(--spacing-400);
+  opacity: 0.33;
+
+  transition: all ease 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+  &:focus {
+    opacity: 1;
+  }
+  &:active {
+    opacity: 1;
+  }
+}

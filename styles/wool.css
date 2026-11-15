@@ -1,0 +1,74 @@
+#black:after {
+  background: url(../assets/library/wool/black.png);
+}
+#blue:after {
+  background: url(../assets/library/wool/blue.png);
+}
+#brown:after {
+  background: url(../assets/library/wool/brown.png);
+}
+#cyan:after {
+  background: url(../assets/library/wool/cyan.png);
+}
+#gray:after {
+  background: url(../assets/library/wool/gray.png);
+}
+#green:after {
+  background: url(../assets/library/wool/green.png);
+}
+#light-blue:after {
+  background: url(../assets/library/wool/light-blue.png);
+}
+#light-gray:after {
+  background: url(../assets/library/wool/light-gray.png);
+}
+#lime:after {
+  background: url(../assets/library/wool/lime.png);
+}
+#magenta:after {
+  background: url(../assets/library/wool/magenta.png);
+}
+#orange:after {
+  background: url(../assets/library/wool/orange.png);
+}
+#pink:after {
+  background: url(../assets/library/wool/pink.png);
+}
+#purple:after {
+  background: url(../assets/library/wool/purple.png);
+}
+#red:after {
+  background: url(../assets/library/wool/red.png);
+}
+#white:after {
+  background: url(../assets/library/wool/white.png);
+}
+#yellow:after {
+  background: url(../assets/library/wool/yellow.png);
+}
+#black:after, 
+#blue:after, 
+#brown:after, 
+#cyan:after,
+#gray:after,
+#green:after,
+#light-blue:after,
+#light-gray:after,
+#lime:after,
+#magenta:after,
+#orange:after,
+#pink:after,
+#purple:after,
+#red:after,
+#white:after,
+#yellow:after {
+  content: '';
+  resize: both;
+  display: inline-block;
+  width: var(--pt-great-primer);
+  height: var(--pt-great-primer);
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
