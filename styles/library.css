@@ -61,7 +61,7 @@ h3, .accordion-header {
     width: var(--full-width);
 
     color: var(--color-primary);
-    padding: var(--spacing-400);
+    padding: var(--spacing-400) 0;
 }
 .cover h1 {
   font-size: var(--pt-canon);
@@ -70,11 +70,14 @@ h3, .accordion-header {
   font-feature-settings: 'dlig' on, 'hlig' on, 'swsh' on;
 }
 .library {
-  padding-top: var(--spacing-400);
-  padding-bottom: var(--spacing-400);
+  padding: var(--spacing-200) 0;
 
-  & .container {
-    gap: var(--spacing-400);
+  @media ( min-width: 48rem ) {
+    padding: var(--spacing-400) 0;
+
+    & .container {
+      gap: var(--spacing-400);
+    }
   }
 
   & p:first-of-type {
