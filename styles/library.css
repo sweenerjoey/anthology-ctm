@@ -47,15 +47,16 @@ h3, .accordion-header {
   border-bottom: 1px solid var(--color-black);
 }
 ul, ol {
-  padding-left: var(--spacing-100);
-  margin-top: var(--spacing-50);
+  margin-top: var(--spacing-100);
   margin-bottom: var(--spacing-100);
 }
 ul {
-  list-style: "– " outside;
+  list-style: "\27E1  " outside;
+  padding-inline-start: var(--spacing-100);
 }
 ol {
-  list-style: upper-roman outside;
+  list-style: upper-roman inside;
+  padding-inline-start: 0;
 }
 /* 
  *
@@ -202,7 +203,16 @@ ol {
       inset: 0;
       background: var(--color-black);
       clip-path: polygon(0 0.66em,0.66em 0.66em,0.66em 0,calc(100% - 0.66em) 0,calc(100% - 0.66em) 0.66em,100% 0.66em,100% calc(100% - 0.66em),calc(100% - 0.66em) calc(100% - 0.66em),calc(100% - 0.66em) 100%,0.66em 100%,0.66em calc(100% - 0.66em),0 calc(100% - 0.66em),0 0.66em,1px  calc(0.66em + 1px),1px calc(100% - 0.66em - 1px),calc(0.66em + 1px) calc(100% - 0.66em - 1px),calc(0.66em + 1px) calc(100% - 1px),calc(100% - 0.66em - 1px) calc(100% - 1px),calc(100% - 0.66em - 1px) calc(100% - 0.66em - 1px),calc(100% - 1px) calc(100% - 0.66em - 1px),calc(100% - 1px) calc(0.66em + 1px),calc(100% - 0.66em - 1px) calc(0.66em + 1px),calc(100% - 0.66em - 1px) 1px,calc(0.66em + 1px) 1px,calc(0.66em + 1px) calc(0.66em + 1px),1px calc(0.66em + 1px));
-;
+    }
+
+    &.float {
+      margin: var(--spacing-100) 0 var(--spacing-200);
+
+      @media ( min-width: 48rem ) {
+        float: right;
+        width: calc((100% / 12) * 4 );
+        margin-left: calc((100% / 12) + var(--spacing-100));
+      }
     }
 
     & h3 {

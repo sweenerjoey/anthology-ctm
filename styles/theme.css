@@ -106,10 +106,8 @@ p {
     font-weight: 400;
 }
 li {
-    font-family: var(--font-serif);
-    line-height: var(--line-height-normal);
-    font-style: normal;
-    font-weight: 400;
+    font-family: inherit;
+    line-height: var(--line-height-loose);
 }
 p a {
     color: var(--color-black);
@@ -426,11 +424,12 @@ h2 {
     font-family: var(--font-sans);
     font-size: var(--pt-bourgeois);
     padding-bottom: var(--spacing-200);
-}
-.sidebar p {
-    font-family: inherit;
-    font-size: inherit;
-    flex: initial;
+
+    & li, p {
+        font-family: inherit;
+        font-size: inherit;
+        flex: initial;
+    }
 }
 .sidebar > .row {
     display: flex;
