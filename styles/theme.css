@@ -35,8 +35,8 @@
     --color-white: #ffffff;
     --color-gray-100: #eee;
     --color-gray-200: #ddd;
-    --color-gray-300: #999;
-    --color-gray-400: #515253;
+    --color-gray-300: #888;
+    --color-gray-400: #414243;
     --color-black: #0d0e0f;
     --color-black-trans: rgb(from var(--color-black) r g b / 0.5);
 
