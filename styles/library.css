@@ -3,6 +3,7 @@
 
   font-family: var(--font-serif);
 }
+
 /*
  *
  * TYPOGRAPHY overrides from theme.css.
@@ -22,6 +23,7 @@ h1 {
 
   font-feature-settings: 'dlig' on, 'hlig' on;
 }
+
 h2 {
   font-family: var(--font-sans);
   font-size: var(--pt-paragon);
@@ -33,7 +35,9 @@ h2 {
 
   margin: var(--spacing-100) 0;
 }
-h3, .accordion-header {
+
+h3,
+.accordion-header {
   font-family: var(--font-sans);
   font-size: var(--pt-english);
   line-height: var(--line-height-normal);
@@ -46,47 +50,54 @@ h3, .accordion-header {
   padding-bottom: var(--spacing-50);
   border-bottom: 1px solid var(--color-black);
 }
-ul, ol {
+
+ul,
+ol {
   margin-top: var(--spacing-100);
   margin-bottom: var(--spacing-100);
 }
+
 ul {
   list-style: "\27E1  " outside;
   padding-inline-start: var(--spacing-100);
 }
+
 ol {
   list-style: upper-roman inside;
   padding-inline-start: 0;
 }
+
 /* 
  *
  * Chained Library, Table of Contents.
  *
  */
 .cover {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
 
-    height: 650px;
-    width: var(--full-width);
+  height: 650px;
+  width: var(--full-width);
 
-    color: var(--color-primary);
-    padding: var(--spacing-400) 0;
+  color: var(--color-primary);
+  padding: var(--spacing-400) 0;
 }
+
 .cover h1 {
   font-size: var(--pt-canon);
   font-style: italic;
   text-align: center;
   font-feature-settings: 'dlig' on, 'hlig' on, 'swsh' on;
 }
+
 .library {
   padding: var(--spacing-200) 0;
 
-  @media ( min-width: 48rem ) {
+  @media (min-width: 48rem) {
     padding: var(--spacing-400) 0;
 
     & .container {
@@ -141,15 +152,17 @@ ol {
         &:hover {
           background: var(--color-gray-200);
         }
+
         &:focus {
           background: var(--color-gray-200);
         }
+
         &:active {
           background: var(--color-gray-200);
         }
       }
 
-      @media ( min-width: 48rem ) {
+      @media (min-width: 48rem) {
         columns: 2;
       }
     }
@@ -161,6 +174,7 @@ ol {
     }
   }
 }
+
 /*
  *
  * Chained Library, Single Entry. Each entry begins with a large opening paragraph, which features a versal (drop-cap).
@@ -169,25 +183,26 @@ ol {
 .entry {
   margin-top: var(--spacing-600);
 
-  @media ( min-width: 48rem ) {
+  @media (min-width: 48rem) {
     margin-top: var(--spacing-1000);
   }
-  
-  & > p:first-of-type {
+
+  &>p:first-of-type {
     font-size: var(--font-size-clamp-about);
     line-height: var(--line-height-loose);
     padding: var(--spacing-100) 0;
 
     &:first-letter {
+      display: block;
       float: left;
 
       font-size: var(--pt-double-great-primer);
       text-transform: uppercase;
       background: url(../assets/library/versal-background.svg) center center / contain no-repeat;
-      padding: 0.75em;
-      margin-right: var(--spacing-50);
+      padding: 0.85em;
+      margin-right: 0.25em;
       margin-bottom: calc(var(--spacing-50) * -1);
-      margin-left: -0.25em;
+      margin-left: calc(var(--spacing-50) * -1);
     }
   }
 
@@ -202,15 +217,15 @@ ol {
       position: absolute;
       inset: 0;
       background: var(--color-black);
-      clip-path: polygon(0 0.66em,0.66em 0.66em,0.66em 0,calc(100% - 0.66em) 0,calc(100% - 0.66em) 0.66em,100% 0.66em,100% calc(100% - 0.66em),calc(100% - 0.66em) calc(100% - 0.66em),calc(100% - 0.66em) 100%,0.66em 100%,0.66em calc(100% - 0.66em),0 calc(100% - 0.66em),0 0.66em,1px  calc(0.66em + 1px),1px calc(100% - 0.66em - 1px),calc(0.66em + 1px) calc(100% - 0.66em - 1px),calc(0.66em + 1px) calc(100% - 1px),calc(100% - 0.66em - 1px) calc(100% - 1px),calc(100% - 0.66em - 1px) calc(100% - 0.66em - 1px),calc(100% - 1px) calc(100% - 0.66em - 1px),calc(100% - 1px) calc(0.66em + 1px),calc(100% - 0.66em - 1px) calc(0.66em + 1px),calc(100% - 0.66em - 1px) 1px,calc(0.66em + 1px) 1px,calc(0.66em + 1px) calc(0.66em + 1px),1px calc(0.66em + 1px));
+      clip-path: polygon(0 0.66em, 0.66em 0.66em, 0.66em 0, calc(100% - 0.66em) 0, calc(100% - 0.66em) 0.66em, 100% 0.66em, 100% calc(100% - 0.66em), calc(100% - 0.66em) calc(100% - 0.66em), calc(100% - 0.66em) 100%, 0.66em 100%, 0.66em calc(100% - 0.66em), 0 calc(100% - 0.66em), 0 0.66em, 1px calc(0.66em + 1px), 1px calc(100% - 0.66em - 1px), calc(0.66em + 1px) calc(100% - 0.66em - 1px), calc(0.66em + 1px) calc(100% - 1px), calc(100% - 0.66em - 1px) calc(100% - 1px), calc(100% - 0.66em - 1px) calc(100% - 0.66em - 1px), calc(100% - 1px) calc(100% - 0.66em - 1px), calc(100% - 1px) calc(0.66em + 1px), calc(100% - 0.66em - 1px) calc(0.66em + 1px), calc(100% - 0.66em - 1px) 1px, calc(0.66em + 1px) 1px, calc(0.66em + 1px) calc(0.66em + 1px), 1px calc(0.66em + 1px));
     }
 
     &.float {
       margin: var(--spacing-100) 0 var(--spacing-200);
 
-      @media ( min-width: 48rem ) {
+      @media (min-width: 48rem) {
         float: right;
-        width: calc((100% / 12) * 4 );
+        width: calc((100% / 12) * 4);
         margin-left: calc((100% / 12) + var(--spacing-100));
       }
     }
@@ -229,17 +244,20 @@ ol {
     &:has(.embers) {
       background: no-repeat center / cover url(../assets/library/important-warning-background.jpg);
       color: var(--color-gray-100);
-      clip-path: polygon(0 0.66em,0.66em 0.66em,0.66em 0,calc(100% - 0.66em) 0,calc(100% - 0.66em) 0.66em,100% 0.66em,100% calc(100% - 0.66em),calc(100% - 0.66em) calc(100% - 0.66em),calc(100% - 0.66em) 100%,0.66em 100%,0.66em calc(100% - 0.66em),0 calc(100% - 0.66em));
+      clip-path: polygon(0 0.66em, 0.66em 0.66em, 0.66em 0, calc(100% - 0.66em) 0, calc(100% - 0.66em) 0.66em, 100% 0.66em, 100% calc(100% - 0.66em), calc(100% - 0.66em) calc(100% - 0.66em), calc(100% - 0.66em) 100%, 0.66em 100%, 0.66em calc(100% - 0.66em), 0 calc(100% - 0.66em));
 
     }
+
     & i {
       font-size: inherit;
     }
   }
+
   & img {
     margin: var(--spacing-50) auto;
   }
 }
+
 /*
  *
  * FEATURE: Accordion. Visually looks the same as H3; expands and collapses to show or hide content.
@@ -248,40 +266,46 @@ ol {
 details {
   margin-bottom: var(--spacing-200);
 }
-details > summary {
-    list-style: none;
-    display: inline-flex;
-    position: relative;
-    align-items: center;
-    width: 100%;
-    padding-top: var(--spacing-50);
 
-    transition: all ease 0.3s;
+details>summary {
+  list-style: none;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  padding-top: var(--spacing-50);
 
-    &:hover {
-      background: var(--color-gray-200);
-      cursor: pointer;
-    }
-    &:active {
-      background: var(--color-gray-200);
-    }
+  transition: all ease 0.3s;
+
+  &:hover {
+    background: var(--color-gray-200);
+    cursor: pointer;
+  }
+
+  &:active {
+    background: var(--color-gray-200);
+  }
 }
+
 summary::-webkit-details-marker {
-    display: none;
+  display: none;
 }
-details > summary:before {
-    content: url(../assets/library/caret-right-bold.svg);
-    line-height: 0;
-    display: inline-block;
-    margin: 0.25em;
-    align-self: center;
 
-    transition: all ease 0.15s;
+details>summary:before {
+  content: url(../assets/library/caret-right-bold.svg);
+  line-height: 0;
+  display: inline-block;
+  margin: 0.25em;
+  align-self: center;
+
+  transition: all ease 0.15s;
 }
-details[open] > summary:before {
-    content: url(../assets/library/caret-right-bold.svg);
-    transform: rotate(90deg);
+
+details[open]>summary:before {
+  content: url(../assets/library/caret-right-bold.svg);
+  transform: rotate(90deg);
 }
+
 /*
  *
  * FEATURE: Dungeon Maps. Features a sticky sidebar to select floors and show corresponding panels.
@@ -294,10 +318,11 @@ details[open] > summary:before {
   font-family: var(--font-sans);
   font-size: var(--pt-english);
 
-  @media ( min-width: 48rem ) {
+  @media (min-width: 48rem) {
     display: none;
   }
 }
+
 .map-radio {
   display: none;
 }
@@ -306,7 +331,7 @@ details[open] > summary:before {
   display: none;
   min-height: 20vh;
 
-  @media ( min-width: 48rem ) {
+  @media (min-width: 48rem) {
     display: grid;
     grid-template-areas: "a a a a b b b b b b b b";
   }
@@ -431,6 +456,7 @@ details[open] > summary:before {
 #t9:checked~.map-layout .map-floors .panel:nth-child(9) {
   display: block;
 }
+
 /*
  *
  * FEATURE: Pagination. At the bottom of every library entry, seamlessly navigate to the previous or next page from the footer.
@@ -447,7 +473,8 @@ details[open] > summary:before {
   border-top: 1px solid var(--color-black);
   padding-bottom: var(--spacing-200);
 
-  & .previous, .next {
+  & .previous,
+  .next {
     display: flex;
     gap: var(--spacing-50);
     flex: 1 0 0;
@@ -460,9 +487,11 @@ details[open] > summary:before {
     &:hover {
       background-color: var(--color-gray-200);
     }
+
     &:focus {
       background-color: var(--color-gray-200);
     }
+
     &:active {
       background-color: var(--color-gray-200);
     }
@@ -482,13 +511,16 @@ details[open] > summary:before {
     &:hover i {
       transform: translateX(calc(var(--spacing-50) * -1));
     }
+
     &:focus i {
       transform: translateX(calc(var(--spacing-50) * -1));
     }
+
     &:active i {
       transform: translateX(calc(var(--spacing-50) * -1));
     }
   }
+
   & .next {
     flex-direction: row-reverse;
 
@@ -503,14 +535,17 @@ details[open] > summary:before {
     &:hover i {
       transform: translateX(calc(var(--spacing-50) * 1));
     }
+
     &:focus i {
       transform: translateX(calc(var(--spacing-50) * 1));
     }
+
     &:active i {
       transform: translateX(calc(var(--spacing-50) * 1));
     }
   }
 }
+
 /*
  *
  * Footer, Chained Library.
@@ -520,12 +555,15 @@ footer {
   background: var(--color-gray-200);
   color: var(--color-black);
 }
+
 footer a {
   color: inherit;
 }
+
 footer:has(nav) {
   background: unset;
 }
+
 footer:has(.logo-x-small) img {
   margin-top: var(--spacing-600);
   margin-bottom: var(--spacing-400);
@@ -536,9 +574,11 @@ footer:has(.logo-x-small) img {
   &:hover {
     opacity: 1;
   }
+
   &:focus {
     opacity: 1;
   }
+
   &:active {
     opacity: 1;
   }
